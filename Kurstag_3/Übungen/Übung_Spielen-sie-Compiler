@@ -1,0 +1,5 @@
+BeispielC wird nicht kompilliert da folgende Zeile fehlt:
+
+public static void main (String [] args) {
+
+}
