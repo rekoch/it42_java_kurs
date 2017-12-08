@@ -2,7 +2,7 @@
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
  */
 
-public class MischMasch1 {
+class MischMasch1 {
     public static void main(String [] args){
         int x = 3;
 
