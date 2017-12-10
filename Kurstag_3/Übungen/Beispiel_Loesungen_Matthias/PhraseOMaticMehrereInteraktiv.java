@@ -7,10 +7,13 @@ import java.util.List;
 public class PhraseOMaticMehrereInteraktiv {
 
     private static List<String> liesWoerterAusDatei(String filename) throws IOException {
+        // BufferedReader fuer File aufmachen, welches sich im Projekt an derselben Stelle findet wie die
+        // Java-Klassen:
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
                         PhraseOMaticMehrereInteraktiv.class.getClassLoader().
                                 getResourceAsStream(filename)));
+
         List<String> words = new ArrayList<>();
         while (true) {
             String line = reader.readLine();
@@ -19,6 +22,7 @@ public class PhraseOMaticMehrereInteraktiv {
             }
             words.add(line);
         }
+        reader.close();
         return words;
     }
 
