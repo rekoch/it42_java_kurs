@@ -5,6 +5,9 @@
  */
 package ch.sbb.grossmann.christoph.it42.java_von_kopf_bis_fuss_s16;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,7 @@ import java.util.List;
  *
  * @author ch.grossmann
  */
-public class Phras_O_Mat_ArrayList {
+public class Phras_O_Mat_ArrayList_Endless {
     
     public static void main(String[] args) {
         
@@ -68,13 +71,34 @@ public class Phras_O_Mat_ArrayList {
         int zweiLänge = wortListeEins.size();
         int dreiLänge = wortListeEins.size();
         
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        boolean stillRunning = true;
+        while (stillRunning) {  
+            
+             
         int rand1 = (int)(Math.random()* einsLänge);
         int rand2 = (int)(Math.random()* zweiLänge);
         int rand3 = (int)(Math.random()* dreiLänge);
         
         String phrase = wortListeEins.get(rand1) + " " + wortListeZwei.get(rand2) + " " + wortListeDrei.get(rand3);
         
-        System.out.println("Was wir bruachen ist eine " + phrase);
+        System.out.println("Was wir brauchen ist eine " + phrase);
+        
+            System.out.println("Nochmal? Gib 'N' ein fuer Abbruch.");
+            String inputUser = null;
+            try {
+                inputUser = reader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            inputUser = inputUser.toLowerCase();
+
+            if(inputUser.startsWith("n")){
+                stillRunning = false;
+            }
+        }
 
     }
     
