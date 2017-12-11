@@ -2,7 +2,7 @@
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
  */
 
-package kapitel_03;
+package ch.sbb;
 
 public class StringPoolingBeispiel {
 
