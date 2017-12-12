@@ -19,7 +19,13 @@
 *.rar
 
 #IDE Files #
-.idea
+.idea/workspace.xml
+.idea/uiDesigner.xml
+.idea/it42_java_kurs.iml
+.idea/libraries
+.idea/inspectionProfiles
+.idea/copyright
+.idea/artifacts
 *.iml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
