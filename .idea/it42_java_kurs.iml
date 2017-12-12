@@ -8,8 +8,12 @@
       <sourceFolder url="file://$MODULE_DIR$/Allgemein/java_von_kopf_bis_fuss_unterlagen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Kurstag_4/Übungen/reserve_uebungen/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Kurstag_4/Übungen/stringpooling" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Kurstag_3/Übungen/Beispiel_Loesungen_Res" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Kurstag_4/Übungen/memory_view_exercise" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Kurstag_4/Übungen/Examples" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="servlet-api-2.5" level="project" />
   </component>
 </module>
