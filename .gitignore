@@ -23,7 +23,8 @@
 .idea/inspectionProfiles
 .idea/copyright
 .idea/artifacts
-*/Übungen/*.iml
+Allgemein/*.iml
+**/Übungen/*.iml
 out
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
