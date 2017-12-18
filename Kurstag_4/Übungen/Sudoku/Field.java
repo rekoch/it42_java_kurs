@@ -4,14 +4,14 @@
 
 import java.util.Scanner;
 
-public class Field {
-    Scanner scanner = new Scanner(System.in);
-    Cell[][] field;
-    int x;
-    int y;
-    String value;
+class Field {
+    private final Scanner scanner = new Scanner(System.in);
+    private Cell[][] field;
+    private int x;
+    private int y;
+    private String value;
 
-    public Field(){
+    private Field(){
         generateField();
         startGame();
     }
