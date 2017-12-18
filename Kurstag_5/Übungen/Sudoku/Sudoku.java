@@ -29,6 +29,16 @@ public class Sudoku {
                 c++;
             }
         }
+
+        for(y=0; y<8; y++){
+            int b = 0;
+            for(int i = 0; i<8; i++) {
+                if (sudoku[i][y] == sudoku[b][y]) {
+                    System.out.println("ERROR: Sudoku wrong");
+                }
+                b++;
+            }
+        }
     }
 
 
