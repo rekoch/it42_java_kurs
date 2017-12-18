@@ -18,9 +18,15 @@ public class Sudoku {
             }
         }
 
-        for(x=0; x<8; x++){
-            for(int i = 0; i<8; i++) {
 
+
+        for(x=0; x<8; x++){
+            int c = 0;
+            for(int i = 0; i<8; i++) {
+                if (sudoku[x][i] == sudoku[x][c]) {
+                    System.out.println("ERROR: Sudoku wrong");
+                }
+                c++;
             }
         }
     }
