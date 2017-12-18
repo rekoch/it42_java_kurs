@@ -11,7 +11,7 @@ class Field {
     private int y;
     private String value;
 
-    private Field(){
+    public Field(){
         generateField();
         startGame();
     }
