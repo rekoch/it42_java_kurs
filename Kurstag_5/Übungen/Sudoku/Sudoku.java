@@ -38,5 +38,6 @@ public class Sudoku {
         setDefaultNumbers(2, 5, 9);
 
         setNumbers(1, 3, 5);
+        setNumbers(2, 4, 9);
     }
 }
