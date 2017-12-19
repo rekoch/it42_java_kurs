@@ -5,7 +5,7 @@ public class Sudoku {
     //Mit dieser Methode können Zahlen gesetzt werden
     //Es wird überprüft, ob in diesem Feld schon ein Wert eingetragen ist
     public void setNumbers(int x, int y, int number) {
-        if (array[x][y] == null) {
+        if (array[x][y] == 0) {
             array[x][y] = number;
         } else {
             System.out.println("ERROR: Field already occupied");
@@ -15,10 +15,10 @@ public class Sudoku {
 
     //Daten werden auf die gesamte Spalte und Zeile überprüft
     //Ebenfalls wird überprüft, ob alle Felder abgefüllt sind
-    public  void evaluation(){
+    public void evaluation(){
         for(int x=0; x<8; x++) {
             for(int y=0; y<8; y++){
-                if (array[x][y] == null) {
+                if (array[x][y] == 0) {
                     System.out.println("ERROR: Please fill out whole Sudoku");
                 }
             }
