@@ -14,6 +14,7 @@ public class ShoppingList {
     Scanner scanner = new Scanner(System.in);
     private String[] availableProducts;
     private String[] availableProductsKuerzel;
+    boolean showWelcomeText = true;
     //versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
     //Es ist Object, weil wir Objekte von verschiedenen Arten in die Liste speichern. wie z.B. Dübel, Mikroskop usw.
     private List<Product> productList = new ArrayList<>();
@@ -24,21 +25,38 @@ public class ShoppingList {
 
         //diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
         while (true) {
-            boolean doAbbruch = addNewProducts();
-
-            if(!doAbbruch){
-                return;
-            }
+            menu();
         //kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
         }
     }
 
-    private boolean addNewProducts() {
-
+    private void menu(){
         //Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
-        if(productList.size() == 0){
+        if(showWelcomeText){
             System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
+            showWelcomeText = false;
         }
+        echo("Geben Sie ein, was Sie tun möchten: \n 1. Produkt hinzufügen \n 2. Warenkorb anzeigen \n 3. Anzahl in Wahrenkorb modifizieren \n 4. Exit");
+        int selectedOption = scanner.nextInt();
+        switch (selectedOption) {
+            case 1:
+                addNewProducts();
+                break;
+            case 2:
+                showProducts();
+                break;
+            case 3:
+                modifyList();
+                break;
+            case 4:
+                return;
+            default:
+                echo("Geben Sie einen gültigen Wert ein.");
+        }
+    }
+
+    private void addNewProducts() {
+
         System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib das Produktkuerzel eines aus der Liste üblicher Produkte aus.");
 
         for (int i = 0; i < availableProducts.length; i++) {
@@ -73,18 +91,6 @@ public class ShoppingList {
         //die Ausgabe der Produkte ist aktuell unschön. Verbessere das. Es gibt diverse Ansätze dafür.
         showProducts();
 
-        checkForModify();
-
-        System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
-        String userInput = scanner.next().toLowerCase().trim();
-
-        //Tes soll egal sein, ob der User das 'n' gross oder klein schreibt.
-        if (userInput.toLowerCase().startsWith("n")){
-            echo("Vielen Dank und auf Wiedersehen");
-            return false;
-        } else {
-            return true;
-        }
     }
 
     private void getAllAvailableProducts() {
@@ -98,35 +104,32 @@ public class ShoppingList {
 
     private void showProducts(){
         System.out.println("Du hast folgende Produkte im Warenkorb: ");
-        int temp = 1;
-        for (Product product : productList){
-            if(product instanceof Duebel){
-                Duebel duebel = (Duebel) product;
-                echo(temp + ". Dübel, Anzahl: " + duebel.getAnzahl());
-            } else if(product instanceof Sicherung){
-                Sicherung sicherung = (Sicherung) product;
-                echo(temp + ". Sicherung, Anzahl: " + sicherung.getAnzahl());
-            } else if(product instanceof LightSaber){
-                LightSaber lightSaber = (LightSaber) product;
-                echo(temp + ". Light Saber, Anzahl: " + lightSaber.getAnzahl());
-            } else if(product instanceof Mikroskop){
-                Mikroskop mikroskop = (Mikroskop) product;
-                echo(temp + ". Mikroskop, Anzahl: " + mikroskop.getAnzahl());
-            } else if(product instanceof RAM){
-                RAM ram = (RAM) product;
-                echo(temp + ". RAM, Anzahl: " + ram.getAnzahl());
+        if(productList.size() == 0){
+            echo("Keine Produkte vorhanden...");
+        } else {
+            int temp = 1;
+            for (Product product : productList){
+                if(product instanceof Duebel){
+                    Duebel duebel = (Duebel) product;
+                    echo(temp + ". Dübel, Anzahl: " + duebel.getAnzahl());
+                } else if(product instanceof Sicherung){
+                    Sicherung sicherung = (Sicherung) product;
+                    echo(temp + ". Sicherung, Anzahl: " + sicherung.getAnzahl());
+                } else if(product instanceof LightSaber){
+                    LightSaber lightSaber = (LightSaber) product;
+                    echo(temp + ". Light Saber, Anzahl: " + lightSaber.getAnzahl());
+                } else if(product instanceof Mikroskop){
+                    Mikroskop mikroskop = (Mikroskop) product;
+                    echo(temp + ". Mikroskop, Anzahl: " + mikroskop.getAnzahl());
+                } else if(product instanceof RAM){
+                    RAM ram = (RAM) product;
+                    echo(temp + ". RAM, Anzahl: " + ram.getAnzahl());
+                }
+                temp++;
             }
-            temp++;
         }
-    }
 
-    private void checkForModify(){
-        echo("Möchten Sie die Anzahl eines Produkts anpassen? Gib 'n' ein zum abbrechen oder 'j' zum bearbeiten");
-        scanner.nextLine();
-        String yesOrNo = scanner.nextLine().toLowerCase().trim();
-        if (yesOrNo.equals("j")){
-            modifyList();
-        }
+        echo("\n");
     }
 
     private void modifyList(){
