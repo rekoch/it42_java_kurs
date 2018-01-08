@@ -36,7 +36,7 @@ public class ShoppingList {
             System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
             showWelcomeText = false;
         }
-        echo("Geben Sie ein, was Sie tun möchten: \n 1. Produkt hinzufügen \n 2. Warenkorb anzeigen \n 3. Anzahl in Wahrenkorb modifizieren \n 4. Produkt löschen \n 5. Exit");
+        echo("Geben Sie ein, was Sie tun möchten: \n 1. Produkt hinzufügen \n 2. Warenkorb anzeigen \n 3. Anzahl in Wahrenkorb modifizieren \n 4. Produkt löschen \n 5. Kaufen \n 6. Exit");
         int selectedOption = scanner.nextInt();
         switch (selectedOption) {
             case 1:
@@ -52,6 +52,9 @@ public class ShoppingList {
                 deleteProduct();
                 break;
             case 5:
+                buyProducts();
+                break;
+            case 6:
                 echo("Vielen Dank und auf Wiedersehen");
                 System.exit(0);
                 break;
@@ -62,7 +65,7 @@ public class ShoppingList {
 
     private void addNewProducts() {
 
-        System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib das Produktkuerzel eines aus der Liste üblicher Produkte aus.");
+        System.out.println("Welches Produkt möchten Sie der Einkaufsliste hinzufügen? Gib das Produktkuerzel eines aus der Liste üblicher Produkte aus.");
 
         for (int i = 0; i < availableProducts.length; i++) {
             System.out.println("ProduktKuerzel: " + availableProductsKuerzel[i] + " Produktname: " + availableProducts[i]);
@@ -104,7 +107,7 @@ public class ShoppingList {
     }
 
     private void showProducts(){
-        System.out.println("Du hast folgende Produkte im Warenkorb: ");
+        System.out.println("Sie haben folgende Produkte im Warenkorb: ");
         if(productList.size() == 0){
             echo("Keine Produkte vorhanden...");
         } else {
@@ -136,29 +139,55 @@ public class ShoppingList {
     private void modifyList(){
         showProducts();
 
-        echo("Welches Produkt? (Bsp: 1)");
-        int input = scanner.nextInt();
-        input -= 1;
+        if(productList.size() != 0){
+            echo("Welches Produkt? (Bsp: 1)");
+            int input = scanner.nextInt();
+            input -= 1;
 
-        echo("Anzahl: ");
-        int number = scanner.nextInt();
+            echo("Anzahl: ");
+            int number = scanner.nextInt();
 
-        Product product = productList.get(input);
-        product.setAnzahl(number);
-        productList.set(input, product);
-        showProducts();
+            Product product = productList.get(input);
+            product.setAnzahl(number);
+            productList.set(input, product);
+            showProducts();
+        }
     }
 
     private void deleteProduct(){
         showProducts();
 
-        echo("Welches Produkt? (Bsp: 1)");
-        int input = scanner.nextInt();
-        input -= 1;
+        if(productList.size() != 0) {
+            echo("Welches Produkt? (Bsp: 1)");
+            int input = scanner.nextInt();
+            input -= 1;
 
-        productList.remove(input);
+            productList.remove(input);
 
+            showProducts();
+        }
+    }
+
+    private void buyProducts(){
         showProducts();
+
+        if(productList.size() != 0){
+            int amount = 0;
+            for (Product product : productList){
+                amount += product.getPreis()*product.getAnzahl();
+            }
+            echo("Ihre Produkte kosten sie " + amount + " Franken. Möchten Sie die Produkte kaufen? Geben Sie j ein um zu Kaufen. Geben Sie n ein um Abzubrechen");
+            scanner.nextLine();
+            String buyOrNot = scanner.nextLine().toLowerCase().trim();
+            if(buyOrNot.equals("j")){
+                productList.clear();
+                echo("Vielen Dank für Ihren Einkauf. Wir wünschen Ihnen noch einen angenehmen Tag.");
+            }else {
+                echo("Vielleicht entscheiden Sie sich noch um.");
+            }
+        }else {
+            echo("Legen Sie zuerst Produkte in Ihren Warenkorb");
+        }
     }
 
     private void echo(String arg){
