@@ -49,7 +49,9 @@ public class ShoppingList {
                 modifyList();
                 break;
             case 4:
-                return;
+                echo("Vielen Dank und auf Wiedersehen");
+                System.exit(0);
+                break;
             default:
                 echo("Geben Sie einen gültigen Wert ein.");
         }
@@ -98,10 +100,6 @@ public class ShoppingList {
         availableProductsKuerzel = new String[]{"dub", "sic", "lis", "mik", "ram"};
     }
 
-    private void echo(String arg){
-        System.out.println(arg);
-    }
-
     private void showProducts(){
         System.out.println("Du hast folgende Produkte im Warenkorb: ");
         if(productList.size() == 0){
@@ -147,5 +145,9 @@ public class ShoppingList {
         productList = new ArrayList<>(Arrays.asList(tempProductList));
 
         showProducts();
+    }
+
+    private void echo(String arg){
+        System.out.println(arg);
     }
 }
