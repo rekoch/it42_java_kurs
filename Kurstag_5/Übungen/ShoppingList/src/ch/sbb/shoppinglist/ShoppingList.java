@@ -12,9 +12,11 @@ public class ShoppingList {
 
     private String[] availableProducts;
     //TODO: versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
+    // da hier nur objekte erfasst werden.
     private List<Object> productList = new ArrayList<>();
 
     //TODO: Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
+    //Diese Methode muss zuerst noch in der Main Klasse aufgerufen werden.
     public void startShoppApp() {
         getAllAvailableProducts();
         Scanner scanner = new Scanner(System.in);
