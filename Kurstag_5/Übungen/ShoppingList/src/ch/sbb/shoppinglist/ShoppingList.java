@@ -80,6 +80,12 @@ public class ShoppingList {
         System.out.println("Ihr Wahrenkorb beinhaltet momentan");
         showShoppingcart();
 
+        System.out.println("Möchten Sie änderungen an dem Produkt vornehmen?");
+        String changes = scanner.nextLine();
+        if(changes.toLowerCase().startsWith("j")){
+            changes();
+        }
+
 
 
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
@@ -100,9 +106,32 @@ public class ShoppingList {
     }
 
 
-
+    //Gespickt bei Florian Borter
     public void showShoppingcart(){
+        int temp = 1;
+        for (Object product : productList){
+            if(product instanceof Duebel){
+                Duebel duebel = (Duebel) product;
+                System.out.println(temp + ". Dübel, Anzahl: " + duebel.getAnzahl());
+            } else if(product instanceof Sicherung){
+                Sicherung sicherung = (Sicherung) product;
+                System.out.println(temp + ". Sicherung, Anzahl: " + sicherung.getAnzahl());
+            } else if(product instanceof LightSaber){
+                LightSaber lightSaber = (LightSaber) product;
+                System.out.println(temp + ". Light Saber, Anzahl: " + lightSaber.getAnzahl());
+            } else if(product instanceof Mikroskop){
+                Mikroskop mikroskop = (Mikroskop) product;
+                System.out.println(temp + ". Mikroskop, Anzahl: " + mikroskop.getAnzahl());
+            } else if(product instanceof RAM){
+                RAM ram = (RAM) product;
+                System.out.println(temp + ". RAM, Anzahl: " + ram.getAnzahl());
+            }
+            temp++;
+        }
+    }
 
+    public void changes() {
 
     }
+
 }
