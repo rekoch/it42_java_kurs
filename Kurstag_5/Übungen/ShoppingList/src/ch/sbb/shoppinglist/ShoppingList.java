@@ -73,6 +73,7 @@ public class ShoppingList {
 
         System.out.println("Anzahl:");
         String userInputAnzahl = scanner.next();
+        System.out.println( );
 
         if (Character.isDigit(Integer.parseInt(userInputAnzahl))){
             System.out.println();
