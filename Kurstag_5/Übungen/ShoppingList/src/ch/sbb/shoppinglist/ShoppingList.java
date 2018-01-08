@@ -31,7 +31,6 @@ public class ShoppingList {
         System.out.println("Du hast folgende Produkte hinzugefügt: ");
         for (Object product : productList){
             System.out.println(product.getClass().getSimpleName());
-            System.out.println(Duebel.anzahlAusgeben());
         }
 
         //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
@@ -76,7 +75,6 @@ public class ShoppingList {
         String userInputAnzahl = scanner.next();
 
         if (Character.isDigit(Integer.parseInt(userInputAnzahl))){
-            Duebel.anzahlÄndern(12);
             System.out.println();
         }
         else{

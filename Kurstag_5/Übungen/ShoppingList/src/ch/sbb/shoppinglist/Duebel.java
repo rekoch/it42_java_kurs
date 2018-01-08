@@ -14,11 +14,4 @@ public class Duebel {
         this.preis = preis;
     }
 
-    public void anzahlÄndern(int i) {
-       this.anzahl = i;
-    }
-
-    public static int anzahlAusgeben(){
-       return 2;
-    }
 }
