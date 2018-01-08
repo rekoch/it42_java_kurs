@@ -16,7 +16,7 @@ public class ShoppingList {
     private String[] availableProductsKuerzel;
     //versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
     //Es ist Object, weil wir Objekte von verschiedenen Arten in die Liste speichern. wie z.B. Dübel, Mikroskop usw.
-    private List<Object> productList = new ArrayList<>();
+    private List<Product> productList = new ArrayList<>();
 
     //Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso? Die funktion wird nicht aufgerufen
     public void startShoppApp() {
@@ -44,7 +44,7 @@ public class ShoppingList {
         for (int i = 0; i < availableProducts.length; i++) {
             System.out.println("ProduktKuerzel: " + availableProductsKuerzel[i] + " Produktname: " + availableProducts[i]);
         }
-        String userProductInput = scanner.next().toLowerCase();
+        String userProductInput = scanner.next().toLowerCase().trim();
 
         switch (userProductInput) {
             //TODO: momentan ist diese Variante sehr fehleranfällig. Ändert sich die Produktliste, stimmen die Zahlen nicht mehr. Kennst du ein Konzept, das zu verbessern?
@@ -71,13 +71,12 @@ public class ShoppingList {
                 System.out.println("deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
         }
         //die Ausgabe der Produkte ist aktuell unschön. Verbessere das. Es gibt diverse Ansätze dafür.
-        System.out.println("Du hast folgende Produkte im Warenkorb: ");
         showProducts();
 
         checkForModify();
 
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
-        String userInput = scanner.next();
+        String userInput = scanner.next().toLowerCase().trim();
 
         //Tes soll egal sein, ob der User das 'n' gross oder klein schreibt.
         if (userInput.toLowerCase().startsWith("n")){
@@ -98,8 +97,9 @@ public class ShoppingList {
     }
 
     private void showProducts(){
+        System.out.println("Du hast folgende Produkte im Warenkorb: ");
         int temp = 1;
-        for (Object product : productList){
+        for (Product product : productList){
             if(product instanceof Duebel){
                 Duebel duebel = (Duebel) product;
                 echo(temp + ". Dübel, Anzahl: " + duebel.getAnzahl());
@@ -123,14 +123,14 @@ public class ShoppingList {
     private void checkForModify(){
         echo("Möchten Sie die Anzahl eines Produkts anpassen? Gib 'n' ein zum abbrechen oder 'j' zum bearbeiten");
         scanner.nextLine();
-        String yesOrNo = scanner.nextLine().toLowerCase();
+        String yesOrNo = scanner.nextLine().toLowerCase().trim();
         if (yesOrNo.equals("j")){
             modifyList();
         }
     }
 
     private void modifyList(){
-        Object[] tempProductList = productList.toArray();
+        Product[] tempProductList = productList.toArray(new Product[productList.size()]);
 
         echo("Welches Produkt? (Bsp: 1)");
         int input = scanner.nextInt();
