@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class ShoppingList {
 
+    Scanner scanner = new Scanner(System.in);
     private String[] availableProducts;
     //TODO: versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
     // da hier nur objekte erfasst werden.
@@ -19,27 +20,27 @@ public class ShoppingList {
     //Diese Methode muss zuerst noch in der Main Klasse aufgerufen werden.
     public void startShoppApp() {
         getAllAvailableProducts();
-        Scanner scanner = new Scanner(System.in);
+
 
         //TODO: diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
-        boolean addingProducts = true;
-        while (addingProducts) {
-           addingProducts = addNewProducts(scanner);
-        }
+            while (true) {
+                boolean doAbbruch = addNewProducts();
 
-        //TODO: die Ausgabe der Produkte ist aktuell unschön. Verbessere das. Es gibt diverse Ansätze dafür.
-        System.out.println("Du hast folgende Produkte hinzugefügt: ");
-        for (Object product : productList){
-            System.out.println(product);
-        }
+                if(!doAbbruch){
+                    return;
+                }
 
-        //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
+
+            //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
+        }
     }
 
-    private boolean addNewProducts(Scanner scanner) {
+    private boolean addNewProducts() {
 
         //TODO: Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
-        System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
+        if(productList.size() == 0) {
+            System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
+        }
         System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib die Produktnummer eines aus der Liste üblicher Produkte aus.");
 
         for (int i = 0; i < availableProducts.length; i++) {
