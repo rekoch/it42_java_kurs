@@ -2,7 +2,7 @@
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
  */
 
-package ShoppingList.src.ch.sbb.shoppinglist;cd
+package ch.sbb.shoppinglist;
 
 public class Duebel {
     private int anzahl;

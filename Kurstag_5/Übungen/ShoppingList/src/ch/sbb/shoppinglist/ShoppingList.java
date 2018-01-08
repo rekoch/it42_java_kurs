@@ -2,7 +2,7 @@
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
  */
 
-package ShoppingList.src.ch.sbb.shoppinglist;
+package ch.sbb.shoppinglist;
 
 import java.util.ArrayList;
 import java.util.List;
