@@ -5,39 +5,39 @@
 package ch.sbb.shoppinglist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class ShoppingList {
 
+    Scanner scanner = new Scanner(System.in);
     private String[] availableProducts;
-    //TODO: versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
+    //versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
+    //Es ist Object, weil wir Objekte von verschiedenen Arten in die Liste speichern. wie z.B. Dübel, Mikroskop usw.
     private List<Object> productList = new ArrayList<>();
 
-    //TODO: Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
+    //Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso? Die funktion wird nicht aufgerufen
     public void startShoppApp() {
         getAllAvailableProducts();
-        Scanner scanner = new Scanner(System.in);
 
-        //TODO: diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
-        boolean addingProducts = true;
-        while (addingProducts) {
-           addingProducts = addNewProducts(scanner);
-        }
+        //diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
+        while (true) {
+            boolean doAbbruch = addNewProducts();
 
-        //TODO: die Ausgabe der Produkte ist aktuell unschön. Verbessere das. Es gibt diverse Ansätze dafür.
-        System.out.println("Du hast folgende Produkte hinzugefügt: ");
-        for (Object product : productList){
-            System.out.println(product);
-        }
-
+            if(!doAbbruch){
+                return;
+            }
         //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
+        }
     }
 
-    private boolean addNewProducts(Scanner scanner) {
+    private boolean addNewProducts() {
 
-        //TODO: Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
-        System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
+        //Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
+        if(productList.size() == 0){
+            System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
+        }
         System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib die Produktnummer eines aus der Liste üblicher Produkte aus.");
 
         for (int i = 0; i < availableProducts.length; i++) {
@@ -48,33 +48,38 @@ public class ShoppingList {
         switch (userProductInput) {
             //TODO: momentan ist diese Variante sehr fehleranfällig. Ändert sich die Produktliste, stimmen die Zahlen nicht mehr. Kennst du ein Konzept, das zu verbessern?
             case 0:
-                //TODO: Preis und Anzahl spielen noch keine Rolle. Wie kannst du das richtig einbinden?
-                productList.add(new Duebel(1, 10));
+                //Preis und Anzahl spielen noch keine Rolle. Wie kannst du das richtig einbinden? Konstruktor ohne Parameter aufrufen
+                productList.add(new Duebel());
                 break;
-                //TODO: erstelle eine korrekte Klasse für 'Sicherung'
+                //erstelle eine korrekte Klasse für 'Sicherung'
             case 1:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Sicherung());
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'Light Saber'
             case 2:
-                productList.add(new Duebel(1, 10));
+                productList.add(new LightSaber());
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'Mikroskop'
+            //erstelle eine korrekte Klasse für 'Mikroskop'
             case 3:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Mikroskop());
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'RAM'
+            //erstelle eine korrekte Klasse für 'RAM'
             case 4:
-                productList.add(new Duebel(1, 10));
+                productList.add(new RAM());
                 break;
             default:
                 System.out.println("deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
         }
+        //die Ausgabe der Produkte ist aktuell unschön. Verbessere das. Es gibt diverse Ansätze dafür.
+        System.out.println("Du hast folgende Produkte im Warenkorb: ");
+        showProducts();
+
+        checkForModify();
+
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
         String userInput = scanner.next();
 
-        //TODO: es soll egal sein, ob der User das 'n' gross oder klein schreibt.
-        if (userInput.startsWith("n")){
+        //Tes soll egal sein, ob der User das 'n' gross oder klein schreibt.
+        if (userInput.toLowerCase().startsWith("n")){
             return false;
         } else {
             return true;
@@ -82,14 +87,77 @@ public class ShoppingList {
     }
 
     private void getAllAvailableProducts() {
-        //TODO: schreibe die Zuweisung der Werte kürzer
-        availableProducts = new String[5];
-
-        availableProducts[0] = "Dübel";
-        availableProducts[1] = "Sicherung";
-        availableProducts[2] = "Light Saber";
-        availableProducts[3] = "Mikroskop";
-        availableProducts[4] = "RAM";
+        availableProducts = new String[]{"Dübel", "Sicherung", "Light Saber", "Mikroskop", "RAM"};
     }
 
+    private void echo(String arg){
+        System.out.println(arg);
+    }
+
+    private void showProducts(){
+        int temp = 1;
+        for (Object product : productList){
+            if(product instanceof Duebel){
+                Duebel duebel = (Duebel) product;
+                echo(temp + ". Dübel, Anzahl: " + duebel.getAnzahl());
+            } else if(product instanceof Sicherung){
+                Sicherung sicherung = (Sicherung) product;
+                echo(temp + ". Sicherung, Anzahl: " + sicherung.getAnzahl());
+            } else if(product instanceof LightSaber){
+                LightSaber lightSaber = (LightSaber) product;
+                echo(temp + ". Light Saber, Anzahl: " + lightSaber.getAnzahl());
+            } else if(product instanceof Mikroskop){
+                Mikroskop mikroskop = (Mikroskop) product;
+                echo(temp + ". Mikroskop, Anzahl: " + mikroskop.getAnzahl());
+            } else if(product instanceof RAM){
+                RAM ram = (RAM) product;
+                echo(temp + ". RAM, Anzahl: " + ram.getAnzahl());
+            }
+            temp++;
+        }
+    }
+
+    private void checkForModify(){
+        echo("Möchten Sie die Anzahl eines Produkts anpassen? Gib 'n' ein zum abbrechen oder 'j' zum bearbeiten");
+        scanner.nextLine();
+        String yesOrNo = scanner.nextLine().toLowerCase();
+        if (yesOrNo.equals("j")){
+            modifyList();
+        }
+    }
+
+    private void modifyList(){
+        Object[] tempProductList = productList.toArray();
+
+        echo("Welches Produkt? (Bsp: 1");
+        int input = scanner.nextInt();
+        input -= 1;
+
+        echo("Anzahl: ");
+        int number = scanner.nextInt();
+
+        if(tempProductList[input] instanceof Duebel){
+            Duebel duebel = (Duebel)tempProductList[input];
+            duebel.setAnzahl(number);
+            tempProductList[input] = duebel;
+        } else if(tempProductList[input] instanceof Sicherung){
+            Sicherung sicherung = (Sicherung) tempProductList[input];
+            sicherung.setAnzahl(number);
+            tempProductList[input] = sicherung;
+        } else if(tempProductList[input] instanceof LightSaber){
+            LightSaber lightSaber = (LightSaber) tempProductList[input];
+            lightSaber.setAnzahl(number);
+            tempProductList[input] = lightSaber;
+        } else if(tempProductList[input] instanceof Mikroskop){
+            Mikroskop mikroskop = (Mikroskop) tempProductList[input];
+            mikroskop.setAnzahl(number);
+            tempProductList[input] = mikroskop;
+        } else if(tempProductList[input] instanceof RAM){
+            RAM ram = (RAM)tempProductList[input];
+            ram.setAnzahl(number);
+            tempProductList[input] = ram;
+        }
+
+        productList = Arrays.asList(tempProductList);
+    }
 }

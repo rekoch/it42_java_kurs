@@ -4,12 +4,9 @@
 
 package ch.sbb.shoppinglist;
 
-public class Duebel {
+public class LightSaber {
     private int anzahl;
     private int preis;
-
-    //macht es wirklich Sinn, dass alles im Konstruktor zu machen?
-    //Laut ShoppingList.java sollte man am Anfang noch keine Attribute setzen. Deshalb unnötig
 
     public int getPreis() {
         return preis;
@@ -26,5 +23,4 @@ public class Duebel {
     public void setAnzahl(int anzahl) {
         this.anzahl = anzahl;
     }
-
 }
