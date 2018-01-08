@@ -36,7 +36,7 @@ public class ShoppingList {
             System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
             showWelcomeText = false;
         }
-        echo("Geben Sie ein, was Sie tun möchten: \n 1. Produkt hinzufügen \n 2. Warenkorb anzeigen \n 3. Anzahl in Wahrenkorb modifizieren \n 4. Exit");
+        echo("Geben Sie ein, was Sie tun möchten: \n 1. Produkt hinzufügen \n 2. Warenkorb anzeigen \n 3. Anzahl in Wahrenkorb modifizieren \n 4. Produkt löschen \n 5. Exit");
         int selectedOption = scanner.nextInt();
         switch (selectedOption) {
             case 1:
@@ -49,6 +49,9 @@ public class ShoppingList {
                 modifyList();
                 break;
             case 4:
+                deleteProduct();
+                break;
+            case 5:
                 echo("Vielen Dank und auf Wiedersehen");
                 System.exit(0);
                 break;
@@ -131,7 +134,7 @@ public class ShoppingList {
     }
 
     private void modifyList(){
-        Product[] tempProductList = productList.toArray(new Product[productList.size()]);
+        showProducts();
 
         echo("Welches Produkt? (Bsp: 1)");
         int input = scanner.nextInt();
@@ -140,9 +143,20 @@ public class ShoppingList {
         echo("Anzahl: ");
         int number = scanner.nextInt();
 
-        tempProductList[input].setAnzahl(number); //ist nun möglich Dank der Product-Klasse
+        Product product = productList.get(input);
+        product.setAnzahl(number);
+        productList.set(input, product);
+        showProducts();
+    }
 
-        productList = new ArrayList<>(Arrays.asList(tempProductList));
+    private void deleteProduct(){
+        showProducts();
+
+        echo("Welches Produkt? (Bsp: 1)");
+        int input = scanner.nextInt();
+        input -= 1;
+
+        productList.remove(input);
 
         showProducts();
     }
