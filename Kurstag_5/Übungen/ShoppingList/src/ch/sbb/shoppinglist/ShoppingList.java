@@ -16,6 +16,8 @@ public class ShoppingList {
     // da hier nur objekte erfasst werden.
     private List<Object> productList = new ArrayList<>();
 
+
+
     //Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
     //Diese Methode muss zuerst noch in der Main Klasse aufgerufen werden.
     public void startShoppApp() {
@@ -34,6 +36,8 @@ public class ShoppingList {
             //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
         }
     }
+
+
 
     private boolean addNewProducts() {
 
@@ -73,6 +77,11 @@ public class ShoppingList {
             default:
                 System.out.println("deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
         }
+        System.out.println("Ihr Wahrenkorb beinhaltet momentan");
+
+
+
+
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
         String userInput = scanner.next();
 
