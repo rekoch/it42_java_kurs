@@ -1,11 +1,10 @@
 /*
- * Copyright (C) Schweizerische Bundesbahnen SBB, 2017.
+ * Copyright (C) Schweizerische Bundesbahnen SBB, 2018.
  */
 
 package ch.sbb.shoppinglist;
 
-public class Duebel {
-
+public class RAM {
     private int anzahl;
     private int preis;
 
@@ -26,9 +25,4 @@ public class Duebel {
     public void setPreis(int preis) {
         this.preis = preis;
     }
-
-
-
-
-
 }

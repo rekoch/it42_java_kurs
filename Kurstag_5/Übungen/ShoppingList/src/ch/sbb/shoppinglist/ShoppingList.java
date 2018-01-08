@@ -12,17 +12,17 @@ public class ShoppingList {
 
     Scanner scanner = new Scanner(System.in);
     private String[] availableProducts;
-    //TODO: versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
+    //versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
     // da hier nur objekte erfasst werden.
     private List<Object> productList = new ArrayList<>();
 
-    //TODO: Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
+    //Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
     //Diese Methode muss zuerst noch in der Main Klasse aufgerufen werden.
     public void startShoppApp() {
         getAllAvailableProducts();
 
 
-        //TODO: diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
+        //diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
             while (true) {
                 boolean doAbbruch = addNewProducts();
 
@@ -37,7 +37,7 @@ public class ShoppingList {
 
     private boolean addNewProducts() {
 
-        //TODO: Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
+        //Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
         if(productList.size() == 0) {
             System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
         }
@@ -52,29 +52,30 @@ public class ShoppingList {
             //TODO: momentan ist diese Variante sehr fehleranfällig. Ändert sich die Produktliste, stimmen die Zahlen nicht mehr. Kennst du ein Konzept, das zu verbessern?
             case 0:
                 //TODO: Preis und Anzahl spielen noch keine Rolle. Wie kannst du das richtig einbinden?
-                productList.add(new Duebel(1, 10));
+                productList.add(new Duebel());
                 break;
-                //TODO: erstelle eine korrekte Klasse für 'Sicherung'
+                //erstelle eine korrekte Klasse für 'Sicherung'
             case 1:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Sicherung());
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'Light Saber'
+            //erstelle eine korrekte Klasse für 'Light Saber'
             case 2:
-                productList.add(new Duebel(1, 10));
+                productList.add(new LightSaber());
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'Mikroskop'
+            //erstelle eine korrekte Klasse für 'Mikroskop'
             case 3:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Mikroskop());
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'RAM'
+            //erstelle eine korrekte Klasse für 'RAM'
             case 4:
-                productList.add(new Duebel(1, 10));
+                productList.add(new RAM());
                 break;
             default:
                 System.out.println("deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
         }
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
         String userInput = scanner.next();
+
 
         //es soll egal sein, ob der User das 'n' gross oder klein schreibt.
         if (userInput.toLowerCase().startsWith("n")){
