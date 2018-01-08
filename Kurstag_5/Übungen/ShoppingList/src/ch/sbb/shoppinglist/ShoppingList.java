@@ -76,8 +76,8 @@ public class ShoppingList {
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
         String userInput = scanner.next();
 
-        //TODO: es soll egal sein, ob der User das 'n' gross oder klein schreibt.
-        if (userInput.startsWith("n")){
+        //es soll egal sein, ob der User das 'n' gross oder klein schreibt.
+        if (userInput.toLowerCase().startsWith("n")){
             return false;
         } else {
             return true;
@@ -85,14 +85,8 @@ public class ShoppingList {
     }
 
     private void getAllAvailableProducts() {
-        //TODO: schreibe die Zuweisung der Werte kürzer
-        availableProducts = new String[5];
-
-        availableProducts[0] = "Dübel";
-        availableProducts[1] = "Sicherung";
-        availableProducts[2] = "Light Saber";
-        availableProducts[3] = "Mikroskop";
-        availableProducts[4] = "RAM";
+        //schreibe die Zuweisung der Werte kürzer
+        availableProducts = new String[]{"Dübel", "Sicherung", "Light Saber", "Mikroskop", "RAM"};
     }
 
 }
