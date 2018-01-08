@@ -4,21 +4,19 @@
 
 package ch.sbb.shoppinglist;
 
-public class Duebel {
+public class RAM {
     private int anzahl;
-    private int preis = 10;
+    private int preis = 128;
 
-    public Duebel(int anzahl){
+    public RAM(int anzahl){
         this.anzahl = anzahl;
     }
 
-    public int getAnzahl()
-    {
+    public int getAnzahl() {
         return anzahl;
     }
 
-    public int getPreis()
-    {
+    public int getPreis() {
         return preis;
     }
 }

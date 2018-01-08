@@ -1,30 +1,32 @@
 package kapitel_01;
 
 public class PhraseOMatic {
-   public static void main (String[] args) {
+    public static void main(String[] args) {
 
-   // drei Wortgruppen erstellen, aus denen ausgewählt wird
-   String[] wortListeEins = {"24/7","Multi-Tier","Enterprise","B2B","erfolgsorientierte","Frontend", "webbasierte","allumfassende", "klevere", "fulltime","pfadkritische", "dynamische"};
+        // drei Wortgruppen erstellen, aus denen ausgewï¿½hlt wird
+        String[] wortListeEins = { "24/7", "Multi-Tier", "Enterprise", "B2B", "erfolgsorientierte", "Frontend", "webbasierte", "allumfassende", "klevere", "fulltime", "pfadkritische", "dynamische" };
 
-   String[] wortListeZwei = {"gepowerte", "haftende", "mehrwert", "orientierte", "zentrierte", "verteilte", "geclusterte", "Off-the-Shelft","Out-of-the-Box", "positionierte", "vernetzte", "fokusierte", "kraftvolle", "geordnete", "zielgerichtete", "geteilte", "kooperative", "beschleunigte"};
+        String[] wortListeZwei = { "gepowerte", "haftende", "mehrwert", "orientierte", "zentrierte", "verteilte", "geclusterte", "Off-the-Shelft", "Out-of-the-Box", "positionierte", "vernetzte",
+                "fokusierte", "kraftvolle", "geordnete", "zielgerichtete", "geteilte", "kooperative", "beschleunigte" };
 
-   String[] wortListeDrei = {"Schicht", "Endstufe", "Lösung", "Architektur", "Kernkompetenz", "Strategie", "Kooperation", "Kundenorientierung", "Raumlichkeit", "Vision", "´Dimension", "Mission"};
+        String[] wortListeDrei = { "Schicht", "Endstufe", "Lï¿½sung", "Architektur", "Kernkompetenz", "Strategie", "Kooperation", "Kundenorientierung", "Raumlichkeit", "Vision", "ï¿½Dimension",
+                "Mission" };
 
-  // ermitteln, wie viele Worte sich in jeder Liste befinden
-  int einsLänge = wortListeEins.length;
-  int zweiLänge = wortListeZwei.length;
-  int dreiLänge = wortListeDrei.length;
+        // ermitteln, wie viele Worte sich in jeder Liste befinden
+        int einsLÃ¤nge = wortListeEins.length;
+        int zweiLÃ¤nge = wortListeZwei.length;
+        int dreiLÃ¤nge = wortListeDrei.length;
 
-  // drei Zufallszahlen generieren, um Wörter aus den Listen herauszuziehen
-  int rand1 = (int) (Math.random() * einsLänge);
-  int rand2 = (int) (Math.random() * zweiLänge);
-  int rand3 = (int) (Math.random() * dreiLänge);
+        // drei Zufallszahlen generieren, um Wï¿½rter aus den Listen herauszuziehen
+        int rand1 = (int) (Math.random() * einsLÃ¤nge);
+        int rand2 = (int) (Math.random() * zweiLÃ¤nge);
+        int rand3 = (int) (Math.random() * dreiLÃ¤nge);
 
-  // eine Phrase zusammenbauen
-  String phrase = wortListeEins[rand1] + " " + wortListeZwei[rand2] + " " + wortListeDrei[rand3];
+        // eine Phrase zusammenbauen
+        String phrase = wortListeEins[rand1] + " " + wortListeZwei[rand2] + " " + wortListeDrei[rand3];
 
-  // eine Phrase ausgeben
-  System.out.println("Was wir brauchen ist ein " + phrase);
-  } 
-}   
+        // eine Phrase ausgeben
+        System.out.println("Was wir brauchen ist ein " + phrase);
+    }
+}
 

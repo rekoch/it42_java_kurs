@@ -5,76 +5,144 @@
 package ch.sbb.shoppinglist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class ShoppingList {
 
     private String[] availableProducts;
-    //TODO: versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
+    //Damit man es einfacher ausgeben kann
     private List<Object> productList = new ArrayList<>();
 
-    //TODO: Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
+    //Muss noch bei main eingefügt werden
     public void startShoppApp() {
+        System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
         getAllAvailableProducts();
         Scanner scanner = new Scanner(System.in);
 
-        //TODO: diese ganze Logik der While Schlaufe lässt sich eigentlich auf eine Zeile kürzen. Weisst du wie?
-        boolean addingProducts = true;
-        while (addingProducts) {
-           addingProducts = addNewProducts(scanner);
-        }
+        while (addNewProducts(scanner)){}
 
-        //TODO: die Ausgabe der Produkte ist aktuell unschön. Verbessere das. Es gibt diverse Ansätze dafür.
-        System.out.println("Du hast folgende Produkte hinzugefügt: ");
+        int preisGesamt = 0;
+        int preisRAM = 0;
+        int preisDuebel = 0;
+        int preisMikroskop = 0;
+        int preisSicherung = 0;
+        int preisLightSaber = 0;
+
+        System.out.println("Du hast folgende Produkte hinzugefuegt: ");
+
         for (Object product : productList){
-            System.out.println(product);
+            preisGesamt = preisGesamt + listProducts(product, preisDuebel, preisMikroskop, preisRAM, preisSicherung, preisLightSaber);
         }
 
-        //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
+        System.out.println("----------------------------------");
+        System.out.println("Gesamtkosten: " + preisGesamt);
+
+        System.out.println("Moechten sie weitere Produkte hinzufuegen? ");
+        String userInput = scanner.next();
+        userInput = userInput.toUpperCase();
+
+        if (userInput.startsWith("J")){
+            while (addNewProducts(scanner)) {}
+
+            System.out.println("Du hast folgende Produkte hinzugefuegt: ");
+
+            for (Object product : productList){
+                preisGesamt = preisGesamt + listProducts(product, preisDuebel, preisMikroskop, preisRAM, preisSicherung, preisLightSaber);
+            }
+
+            System.out.println("----------------------------------");
+            System.out.println("Gesamtkosten: " + preisGesamt);
+
+            System.out.println("\nDanke fuer ihren Einkauf!");
+        } else {
+            System.out.println("\nDanke fuer ihren Einkauf!");
+        }
+
+    }
+
+    private int listProducts(Object product, int preisDuebel, int preisMikroskop, int preisRAM, int preisSicherung, int preisLightSaber)
+    {
+        if (product instanceof Duebel)
+        {
+            Duebel duebel = (Duebel) product;
+            preisDuebel = preisDuebel + (duebel.getPreis() * duebel.getAnzahl());
+            System.out.println("Duebel, Anzahl: " + duebel.getAnzahl() + ", Preis: " + preisDuebel);
+            return preisDuebel;
+        }
+
+        else if (product instanceof Mikroskop)
+        {
+            Mikroskop mikroskop = (Mikroskop) product;
+            preisMikroskop = preisMikroskop + (mikroskop.getPreis() * mikroskop.getAnzahl());
+            System.out.println("Mikroskop, Anzahl: " + mikroskop.getAnzahl() + ", Preis: " + preisMikroskop);
+            return preisMikroskop;
+        }
+
+        else if (product instanceof Sicherung)
+        {
+            Sicherung sicherung = (Sicherung) product;
+            preisSicherung = preisSicherung + (sicherung.getPreis() * sicherung.getAnzahl());
+            System.out.println("Sicherung, Anzahl: " + sicherung.getAnzahl() + ", Preis: " + preisSicherung);
+            return preisSicherung;
+        }
+
+        else if (product instanceof Light_Saber)
+        {
+            Light_Saber light_Saber = (Light_Saber) product;
+            preisLightSaber = preisLightSaber + (light_Saber.getPreis() * light_Saber.getAnzahl());
+            System.out.println("Light Saber, Anzahl: " + light_Saber.getAnzahl() + ", Preis: " + preisLightSaber);
+            return preisLightSaber;
+        }
+
+        else if (product instanceof RAM)
+        {
+            RAM RAM = (RAM) product;
+            preisRAM =  preisRAM + (RAM.getPreis() * RAM.getAnzahl());
+            System.out.println("RAM, Anzahl: " + RAM.getAnzahl() + ", Preis: " + preisRAM);
+            return preisRAM;
+        }
+
+        return 0;
     }
 
     private boolean addNewProducts(Scanner scanner) {
 
-        //TODO: Der Willkomenstext wird zu oft ausgegeben. Mach was dagegen.
-        System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
-        System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib die Produktnummer eines aus der Liste üblicher Produkte aus.");
+        System.out.println("Welches Produkt moechtest du der Einkaufsliste hinzufuegen? Gib die Produktnummer eines aus der Liste üblicher Produkte aus.");
 
         for (int i = 0; i < availableProducts.length; i++) {
             System.out.println("Produktnummer: " + i + " Produktname: " + availableProducts[i]);
         }
         int userProductInput = scanner.nextInt();
+        System.out.println("Wie viele Produkte dieser Art willst du einkaufen?");
+        int anzahl = scanner.nextInt();
 
         switch (userProductInput) {
             //TODO: momentan ist diese Variante sehr fehleranfällig. Ändert sich die Produktliste, stimmen die Zahlen nicht mehr. Kennst du ein Konzept, das zu verbessern?
             case 0:
-                //TODO: Preis und Anzahl spielen noch keine Rolle. Wie kannst du das richtig einbinden?
-                productList.add(new Duebel(1, 10));
+                productList.add(new Duebel(anzahl));
                 break;
-                //TODO: erstelle eine korrekte Klasse für 'Sicherung'
             case 1:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Sicherung(anzahl));
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'Light Saber'
             case 2:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Light_Saber(anzahl));
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'Mikroskop'
             case 3:
-                productList.add(new Duebel(1, 10));
+                productList.add(new Mikroskop(anzahl));
                 break;
-            //TODO: erstelle eine korrekte Klasse für 'RAM'
             case 4:
-                productList.add(new Duebel(1, 10));
+                productList.add(new RAM(anzahl));
                 break;
             default:
-                System.out.println("deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
+                System.out.println("Deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
         }
-        System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
+        System.out.println("Weitere Produkte hinzufuegen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
         String userInput = scanner.next();
+        userInput = userInput.toUpperCase();
 
-        //TODO: es soll egal sein, ob der User das 'n' gross oder klein schreibt.
-        if (userInput.startsWith("n")){
+        if (userInput.startsWith("N")){
             return false;
         } else {
             return true;
@@ -82,14 +150,7 @@ public class ShoppingList {
     }
 
     private void getAllAvailableProducts() {
-        //TODO: schreibe die Zuweisung der Werte kürzer
-        availableProducts = new String[5];
-
-        availableProducts[0] = "Dübel";
-        availableProducts[1] = "Sicherung";
-        availableProducts[2] = "Light Saber";
-        availableProducts[3] = "Mikroskop";
-        availableProducts[4] = "RAM";
+        availableProducts = new String[] {"Duebel", "Sicherung", "Light Saber", "Mikroskop", "RAM"};
     }
 
 }

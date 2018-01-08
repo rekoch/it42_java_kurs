@@ -4,21 +4,19 @@
 
 package ch.sbb.shoppinglist;
 
-public class Duebel {
+public class Light_Saber {
     private int anzahl;
-    private int preis = 10;
+    private int preis = 3000;
 
-    public Duebel(int anzahl){
+    public Light_Saber(int anzahl){
         this.anzahl = anzahl;
     }
 
-    public int getAnzahl()
-    {
+    public int getAnzahl() {
         return anzahl;
     }
 
-    public int getPreis()
-    {
+    public int getPreis() {
         return preis;
     }
 }
