@@ -13,6 +13,7 @@ public class ShoppingList {
 
     Scanner scanner = new Scanner(System.in);
     private String[] availableProducts;
+    private String[] availableProductsKuerzel;
     //versuche zu begründen, wieso der Typ der Liste hier "Object" ist. Wir werden später lernen, wie man so was richtig macht.
     //Es ist Object, weil wir Objekte von verschiedenen Arten in die Liste speichern. wie z.B. Dübel, Mikroskop usw.
     private List<Object> productList = new ArrayList<>();
@@ -28,7 +29,7 @@ public class ShoppingList {
             if(!doAbbruch){
                 return;
             }
-        //TODO: kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
+        //kannst du allenfalls das Programm so erweitern, dass der Benuzter die Anzahl anpassen kann? Oder vielleicht doch wieder Produkte hinzufügen kann?
         }
     }
 
@@ -38,32 +39,32 @@ public class ShoppingList {
         if(productList.size() == 0){
             System.out.println("Herzlich Willkommen zu dieser innovativen und ewig lebender Shopping Liste. Basierend auf der einzigartigen Konsole.");
         }
-        System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib die Produktnummer eines aus der Liste üblicher Produkte aus.");
+        System.out.println("Welches Produkt möchtest du der Einkaufsliste hinzufügen? Gib das Produktkuerzel eines aus der Liste üblicher Produkte aus.");
 
         for (int i = 0; i < availableProducts.length; i++) {
-            System.out.println("Produktnummer: " + i + " Produktname: " + availableProducts[i]);
+            System.out.println("ProduktKuerzel: " + availableProductsKuerzel[i] + " Produktname: " + availableProducts[i]);
         }
-        int userProductInput = scanner.nextInt();
+        String userProductInput = scanner.next().toLowerCase();
 
         switch (userProductInput) {
             //TODO: momentan ist diese Variante sehr fehleranfällig. Ändert sich die Produktliste, stimmen die Zahlen nicht mehr. Kennst du ein Konzept, das zu verbessern?
-            case 0:
+            case "dub":
                 //Preis und Anzahl spielen noch keine Rolle. Wie kannst du das richtig einbinden? Konstruktor ohne Parameter aufrufen
                 productList.add(new Duebel());
                 break;
                 //erstelle eine korrekte Klasse für 'Sicherung'
-            case 1:
+            case "sic":
                 productList.add(new Sicherung());
                 break;
-            case 2:
+            case "lis":
                 productList.add(new LightSaber());
                 break;
             //erstelle eine korrekte Klasse für 'Mikroskop'
-            case 3:
+            case "mik":
                 productList.add(new Mikroskop());
                 break;
             //erstelle eine korrekte Klasse für 'RAM'
-            case 4:
+            case "ram":
                 productList.add(new RAM());
                 break;
             default:
@@ -89,6 +90,7 @@ public class ShoppingList {
 
     private void getAllAvailableProducts() {
         availableProducts = new String[]{"Dübel", "Sicherung", "Light Saber", "Mikroskop", "RAM"};
+        availableProductsKuerzel = new String[]{"dub", "sic", "lis", "mik", "ram"};
     }
 
     private void echo(String arg){
