@@ -80,6 +80,7 @@ public class ShoppingList {
 
         //Tes soll egal sein, ob der User das 'n' gross oder klein schreibt.
         if (userInput.toLowerCase().startsWith("n")){
+            echo("Vielen Dank und auf Wiedersehen");
             return false;
         } else {
             return true;
@@ -129,7 +130,7 @@ public class ShoppingList {
     private void modifyList(){
         Object[] tempProductList = productList.toArray();
 
-        echo("Welches Produkt? (Bsp: 1");
+        echo("Welches Produkt? (Bsp: 1)");
         int input = scanner.nextInt();
         input -= 1;
 
@@ -158,6 +159,8 @@ public class ShoppingList {
             tempProductList[input] = ram;
         }
 
-        productList = Arrays.asList(tempProductList);
+        productList = new ArrayList<>(Arrays.asList(tempProductList));
+
+        showProducts();
     }
 }
