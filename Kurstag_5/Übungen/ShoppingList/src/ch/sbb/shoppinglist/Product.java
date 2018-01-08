@@ -5,6 +5,10 @@
 package ch.sbb.shoppinglist;
 
 public abstract class Product {
+    public Product(){
+        anzahl = 1;
+    }
+
     private int anzahl;
     private int preis;
 
