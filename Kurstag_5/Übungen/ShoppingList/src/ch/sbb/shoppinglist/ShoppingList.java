@@ -81,11 +81,7 @@ public class ShoppingList {
         System.out.println("Ihr Wahrenkorb beinhaltet momentan");
         showShoppingcart();
 
-        System.out.println("Möchten Sie änderungen an dem Produkt vornehmen?");
-        String changes = scanner.nextLine();
-        if(changes.toLowerCase().startsWith("j")){
-            changes();
-        }
+
 
 
 
@@ -128,8 +124,19 @@ public class ShoppingList {
                 System.out.println(temp + ". RAM, Anzahl: " + ram.getAnzahl());
             }
             temp++;
+            Modifie();
         }
     }
+
+
+    public void Modifie(){
+        System.out.println("Möchten Sie änderungen an dem Produkt vornehmen?(j/n)");
+        String changes = scanner.nextLine();
+        if(changes.toLowerCase().startsWith("j")){
+            changes();
+        }
+    }
+
 
     public void changes() {
         Object[] tempProductList = productList.toArray();
