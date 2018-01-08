@@ -6,11 +6,11 @@ package ch.sbb.shoppinglist;
 
 public class Duebel {
     private int anzahl;
-    private int preis;
+    private int preis = 10;
 
-    //TODO: macht es wirklich Sinn, dass alles im Konstruktor zu machen?
-    public Duebel(int anzahl, int preis){
+    //TODO: macht es wirklich Sinn, dass alles im Konstruktor zu machen? Nur Anzahl
+    public Duebel(int anzahl){
+
         this.anzahl = anzahl;
-        this.preis = preis;
     }
 }
