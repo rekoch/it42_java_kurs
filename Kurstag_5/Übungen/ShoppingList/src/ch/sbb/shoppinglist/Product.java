@@ -23,4 +23,8 @@ public abstract class Product {
     public void setAnzahl(int anzahl) {
         this.anzahl = anzahl;
     }
+
+    public abstract String getProductnameName();
+
+    public abstract String getProductKuerzel();
 }
