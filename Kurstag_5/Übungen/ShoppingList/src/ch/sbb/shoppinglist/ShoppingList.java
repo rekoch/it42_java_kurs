@@ -78,6 +78,7 @@ public class ShoppingList {
                 System.out.println("deine gewählte Zahl entspricht keinem Produkt. Versuchs nochmal");
         }
         System.out.println("Ihr Wahrenkorb beinhaltet momentan");
+        showShoppingcart();
 
 
 
@@ -98,4 +99,10 @@ public class ShoppingList {
         availableProducts = new String[]{"Dübel", "Sicherung", "Light Saber", "Mikroskop", "RAM"};
     }
 
+
+
+    public void showShoppingcart(){
+
+
+    }
 }
