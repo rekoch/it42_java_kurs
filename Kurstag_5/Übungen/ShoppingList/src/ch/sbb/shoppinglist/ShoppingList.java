@@ -139,27 +139,7 @@ public class ShoppingList {
         echo("Anzahl: ");
         int number = scanner.nextInt();
 
-        if(tempProductList[input] instanceof Duebel){
-            Duebel duebel = (Duebel)tempProductList[input];
-            duebel.setAnzahl(number);
-            tempProductList[input] = duebel;
-        } else if(tempProductList[input] instanceof Sicherung){
-            Sicherung sicherung = (Sicherung) tempProductList[input];
-            sicherung.setAnzahl(number);
-            tempProductList[input] = sicherung;
-        } else if(tempProductList[input] instanceof LightSaber){
-            LightSaber lightSaber = (LightSaber) tempProductList[input];
-            lightSaber.setAnzahl(number);
-            tempProductList[input] = lightSaber;
-        } else if(tempProductList[input] instanceof Mikroskop){
-            Mikroskop mikroskop = (Mikroskop) tempProductList[input];
-            mikroskop.setAnzahl(number);
-            tempProductList[input] = mikroskop;
-        } else if(tempProductList[input] instanceof RAM){
-            RAM ram = (RAM)tempProductList[input];
-            ram.setAnzahl(number);
-            tempProductList[input] = ram;
-        }
+        tempProductList[input].setAnzahl(number); //ist nun möglich Dank der Product-Klasse
 
         productList = new ArrayList<>(Arrays.asList(tempProductList));
 
