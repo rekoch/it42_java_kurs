@@ -81,7 +81,6 @@ public class ShoppingList {
 
 
 
-
         System.out.println("Weitere Produkte hinzufügen? Gib 'n' ein zum abbrechen oder 'j' zum weitermachen.");
         String userInput = scanner.next();
 
