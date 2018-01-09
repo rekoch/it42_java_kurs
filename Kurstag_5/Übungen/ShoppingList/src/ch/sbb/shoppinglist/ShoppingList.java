@@ -97,5 +97,4 @@ public class ShoppingList {
         availableProducts = new String[] {"Dübel", "Sicherung", "Light Saber", "Mikroskop", "RAM"};
 
     }
-
 }
