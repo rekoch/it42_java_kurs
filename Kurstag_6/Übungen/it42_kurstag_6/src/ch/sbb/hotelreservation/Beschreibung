@@ -1,0 +1,20 @@
+class Hotel
+	anzahl freie zimmer
+	anzahl belegte zimmer
+	reservierung
+
+class Zimmer
+	raumnummer
+	preis
+	einzelzimmer?
+	belegt von-bis
+
+
+class Gaeste
+	anzahl personen
+	reserviert ja/nein
+		wenn nein --> noch platz?
+	bezahlt ja/nein
+	aufenthalt von - bis
+
+
