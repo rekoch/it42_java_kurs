@@ -1,6 +1,7 @@
+package ch.sbb.hotelreservation;
 
-import ch.grossmann.timbuchalka.arraylist.ArrayListUdemy;
-import java.util.ArrayList;
+
+
 import java.util.Scanner;
 
 /*
@@ -11,41 +12,63 @@ public class Hotel {
     
     private static Scanner scanner = new Scanner(System.in);
     
-    // Ein Objekt der ArrayListUdemy erstellen
+    // Ein Objekt erstellen
     private static Zimmer zimmer= new Zimmer();
-    
-        
-    
-    
-    
-    
+
+
     public static void main(String[] args) {
+        boolean quitRoomInit = false;
+        int choiceRoomInit = 0;
+        printRoomInstructions();
+        while(!quitRoomInit){
+            System.out.println("Wähle deine Handlung: ");
+            choiceRoomInit = scanner.nextInt();
+            scanner.nextLine();
+            
+            switch(choiceRoomInit){
+                case 0:
+                    initRoomnumbers();
+                    break;
+                    
+                case 1:
+                    quitRoomInit = true;
+                    break;                    
+            }
+        }
+        
+        
         boolean quit = false;
         int choice = 0;
         printInstructions();
         while(!quit){
-            System.out.println("Enter your choice: ");
+            System.out.println("Wähle deine Handlung: ");
             choice = scanner.nextInt();
             scanner.nextLine();
             
             switch(choice){
                 case 0:
+                    // gib die Auswahl wieder
                     printInstructions();
                     break;
                 case 1:
-                    zimmer.printZimmerList();
+                    // zeige freie Zimmer
+                    zimmer.printFreieZimmer();
                     break;
                 case 2:
-                    addItem();
+                    // zeige belegte Zimmer
+                    zimmer.printBelegteZimmer();
                     break; 
                 case 3:
-                    modifyItem();
+                    // füge Reservation hinzu
+                    addReservation();
                     break;
                 case 4:
-                    removeItem();
+                    // entferne reservation
+                    removeReservation();
                     break;
                 case 5:
-                    searchForItem();
+                    // ändere reservation
+                    modifyReservation();
                     break;
                 case 6:
                     quit = true;
@@ -55,48 +78,56 @@ public class Hotel {
         
     }
     
+ 
+    
+    public static void printRoomInstructions(){
+        System.out.println("\nWähle eine Option ");
+        System.out.println("\t 0 - Gib deine Zimmer ein.");
+        System.out.println("\t 1 - Alle Zimmer eingegeben.");
+
+    }
+    
     public static void printInstructions(){
-        System.out.println("\nPress ");
-        System.out.println("\t 0 - To print choice options.");
-        System.out.println("\t 1 - To print the list of grocery items.");
-        System.out.println("\t 2 - To add an item in the list.");
-        System.out.println("\t 3 - To modify an item in the list");
-        System.out.println("\t 4 - To remove an item from the list.");
-        System.out.println("\t 5 - To search for an item in the list.");
-        System.out.println("\t 6 - To quit the application.");
+        System.out.println("\nWähle eine Option ");
+        System.out.println("\t 0 - Zeigt die Optionen.");
+        System.out.println("\t 1 - Zeigt alle freien Zimmer.");
+        System.out.println("\t 2 - Zeigt alle belegten Zimmer.");
+        System.out.println("\t 3 - Eine Reservation hinzufügen.");
+        System.out.println("\t 4 - Eine Reservation entfernen.");
+        System.out.println("\t 5 - Ein reserviertes Zimmer ändern.");
+        System.out.println("\t 6 - Das Programm beenden.");
         
     }
     
-    public static void addItem(){
-        System.out.print("Please enter the grocery item: ");
-        groceryList.addGroceryListItem(scanner.nextLine());
+    private static void initRoomnumbers(){
+        System.out.print("Gib die freien Zimmernummer ein: ");
+        int roomnumber = scanner.nextInt();
+        // TODO kontrolle auf duplikate
+        zimmer.addFreieZimmer(roomnumber);
     }
     
-    public static void modifyItem(){
-        System.out.print("Current item name: ");
-        String oldItem = scanner.nextLine();
-        System.out.print("Enter new item: ");
-        String newItem = scanner.nextLine();
-        groceryList.modifyGroceryListItem(oldItem, newItem);
+    public static void addReservation(){
+        System.out.print("Gib die zu reservierende Zimmernummer ein: ");
+        int addRes = scanner.nextInt();
+        zimmer.addBelegteZimmer(addRes);
+        zimmer.removeFreieZimmer(addRes);
+    }
+    
+    public static void modifyReservation(){
+        System.out.print("Gib die zu ändernde reservierte Zimmernummer an: ");
+        Integer oldRoom = scanner.nextInt();
+        System.out.print("Gib die neue Zimmernummer an: ");
+        Integer newRoom = scanner.nextInt();
+        zimmer.modifyReservationRoom(oldRoom, newRoom);
         
     }
     
-        public static void removeItem(){
-        System.out.print("Enter item name: ");
-        String itemName = scanner.nextLine();
-        groceryList.removeGroceryItem(itemName); 
+        public static void removeReservation(){
+        System.out.print("Gib die zu entfernende reservierte Zimmernummer an: ");
+        Integer remRes = scanner.nextInt();
+        zimmer.removeReservation(remRes); 
         
     }
-        
-        public static void searchForItem(){
-        System.out.print("Enter item number: ");
-        String searchItem = scanner.nextLine();
-        if(groceryList.onFile(searchItem)){
-            System.out.print("Found " + searchItem + " in our grocery list.");
-        }else{
-            System.out.print(searchItem + " is not in the shopping list.");
-        }
-        
-    }
+
 
 }
