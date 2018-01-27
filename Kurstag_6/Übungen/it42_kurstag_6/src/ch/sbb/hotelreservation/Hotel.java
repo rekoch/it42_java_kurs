@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 /*
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2018.
+ * Author: Christoph Grossmann
  */
 
 public class Hotel {
@@ -17,6 +18,8 @@ public class Hotel {
 
 
     public static void main(String[] args) {
+        
+        
         boolean quitRoomInit = false;
         int choiceRoomInit = 0;
         printRoomInstructions();
@@ -27,6 +30,7 @@ public class Hotel {
             
             switch(choiceRoomInit){
                 case 0:
+                    // Um die Liste der freien Zimmer zu erstellen
                     initRoomnumbers();
                     break;
                     
@@ -79,14 +83,22 @@ public class Hotel {
     }
     
  
-    
+    // Gibt die Optionen für das erstellen der Zimmerliste
     public static void printRoomInstructions(){
         System.out.println("\nWähle eine Option ");
-        System.out.println("\t 0 - Gib deine Zimmer ein.");
-        System.out.println("\t 1 - Alle Zimmer eingegeben.");
+        System.out.println("\t 0 - Gib eine Zimmernummer ein.");
+        System.out.println("\t 1 - Alle Zimmer eingegeben, weiter zur Reservation.");
 
     }
     
+    // 
+    private static void initRoomnumbers(){
+        System.out.print("Gib die freien Zimmernummer ein: ");
+        int roomnumber = scanner.nextInt();
+        zimmer.addFreieZimmer(roomnumber);
+    }    
+    
+    // Gibt die Optionen für das managen der Reservationen
     public static void printInstructions(){
         System.out.println("\nWähle eine Option ");
         System.out.println("\t 0 - Zeigt die Optionen.");
@@ -99,13 +111,7 @@ public class Hotel {
         
     }
     
-    private static void initRoomnumbers(){
-        System.out.print("Gib die freien Zimmernummer ein: ");
-        int roomnumber = scanner.nextInt();
-        // TODO kontrolle auf duplikate
-        zimmer.addFreieZimmer(roomnumber);
-    }
-    
+ 
     public static void addReservation(){
         System.out.print("Gib die zu reservierende Zimmernummer ein: ");
         int addRes = scanner.nextInt();
