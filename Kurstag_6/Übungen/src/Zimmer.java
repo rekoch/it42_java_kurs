@@ -38,4 +38,9 @@ public class Zimmer {
     public int getPlaetze() {
         return plaetze;
     }
+
+
+
+
+
 }
