@@ -1,7 +1,7 @@
-public class Sudoku {
+public class sudoku {
     private final Feld[][] feld;
 
-    public Sudoku() {
+    public sudoku() {
         feld = new Feld[9][9];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
