@@ -1,0 +1,13 @@
+private int summeBerechnen(int ersteZahl, zweiteZahl){}
+
+private int laengeText(String text){}
+
+private int reservationen(){}
+
+private void speichern(File file, String path){}
+
+private double suchen(double[] nummern){}
+
+public double distanz(int x1,int y1, int x2, int y2){}
+
+public void executeBatch(String path){}
