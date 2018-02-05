@@ -11,19 +11,21 @@ public class dotComGame {
     private String pattern = "[0-9]+";
 
     public dotComGame(){
-        hiddenmap.generateShips();
+        hiddenmap.generateTripleShips(3);
         gameLoop();
     }
 
     private void gameLoop(){
         while(true){
+            hiddenmap.showMap(1, 8);
             gameMap.showMap(1, 8);
+            System.out.println("Geben Sie die Koordinaten ein (x y): (Bsp: 5 5)");
             String input = scanner.nextLine();
             String[] inputs = input.split(" ");
             if(validate(inputs)){
-                int x = Integer.parseInt(inputs[0]);
-                int y = Integer.parseInt(inputs[1]);
-                coverUp(x , y);
+                int x = Integer.parseInt(inputs[1]);
+                int y = Integer.parseInt(inputs[0]);
+                coverUp(x, y);
             }else{
                 System.out.println("Falsche Eingabe");
             }
@@ -40,11 +42,27 @@ public class dotComGame {
         int xInMap = x+1;
         int yInMap = y+1;
         gameMap.getMap()[xInMap][yInMap] = hiddenmap.getMap()[xInMap][yInMap];
-        gameMap.getMap()[xInMap][yInMap].setCoveredUp(true);
-        checkForWin();
+        if(gameMap.getMap()[xInMap][yInMap].getCellValue().equals("X")){
+            System.out.println("Treffer");
+            checkForWin();
+        }else{
+            System.out.println("Daneben");
+        }
     }
 
     private void checkForWin(){
-         //doStuff
+        int dotComsInMap = 0;
+        for (int x = 0; x < 9; x++){
+            for (int y = 0; y < 9; y++){
+                if(gameMap.getMap()[x][y].getCellValue().equals("X")){
+                    dotComsInMap++;
+                    if(dotComsInMap == hiddenmap.getDotComsInField()){
+                        gameMap.showMap(1, 8);
+                        System.out.println("Sieg");
+                        System.exit(0);
+                    }
+                }
+            }
+        }
     }
 }

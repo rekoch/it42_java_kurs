@@ -7,6 +7,7 @@ import java.util.Random;
 public class dotComField {
     Random random = new Random();
     private dotComCell[][] map = new dotComCell[9][9];
+    private int dotComsInField = 0;
 
     public dotComField(){
        initMap();
@@ -21,14 +22,14 @@ public class dotComField {
         }
     }
 
-    public void generateShips(){
+    public void generateTripleShips(int amount){
 
         int x;
         int y;
-        int countDotComs = 0;
+        int countShips = 0;
         int view;
 
-        while (countDotComs < 3) {
+        while (countShips < amount) {
             view = generateRandom(2, 0);
 
             if (view == 0){ //bei 0 ist die Ausrichtung horizontal -> sonst ist sie vertikal ^
@@ -42,7 +43,8 @@ public class dotComField {
                     map[x][y].setCellValue("X");
                     map[x + 1][y].setCellValue("X");
                     map[x + 2][y].setCellValue("X");
-                    countDotComs++;
+                    countShips++;
+                    dotComsInField += 3;
                 }
             } else{
                 x = generateRandom(7, 1);
@@ -54,7 +56,8 @@ public class dotComField {
                     map[x][y].setCellValue("X");
                     map[x][y + 1].setCellValue("X");
                     map[x][y + 2].setCellValue("X");
-                    countDotComs++;
+                    countShips++;
+                    dotComsInField += 3;
                 }
             }
         }
@@ -65,16 +68,18 @@ public class dotComField {
     }
 
     public void showMap(int from, int to){
-        /*for(int i = 1; i < 8; i++){
-            for(int j = 1; j < 8; j++){
-                System.out.print(map[i][j].getCellValue() + "\t");
-            }
-            System.out.println("\n");
-        }*/
+        for (int h = 0; h < 7; h++){
+            System.out.print("\t" + h);
+        }
+        int temp = 0;
+        System.out.println("\n");
         for(int i = from; i < to; i++){
             for(int j = from; j < to; j++){
-                //System.out.print(map[i][j].getCellValue() + "\t");
-                System.out.print(map[i][j].getCellValue() + "\t");
+                if(j == from){
+                    System.out.print(temp++ + "\t" + map[i][j].getCellValue());
+                }else {
+                    System.out.print("\t" + map[i][j].getCellValue());
+                }
             }
             System.out.println("\n");
         }
@@ -82,5 +87,9 @@ public class dotComField {
 
     public dotComCell[][] getMap() {
         return map;
+    }
+
+    public int getDotComsInField() {
+        return dotComsInField;
     }
 }
