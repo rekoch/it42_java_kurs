@@ -8,6 +8,7 @@ public class dotComField {
     Random random = new Random();
     private dotComCell[][] map = new dotComCell[9][9];
     private int dotComsInField = 0;
+    private dotComSpaceValidator validator = new dotComSpaceValidator();
 
     public dotComField(){
        initMap();
@@ -31,14 +32,12 @@ public class dotComField {
 
         while (countShips < amount) {
             alignment = generateRandom(2, 0);
+            System.out.println(alignment);
 
             if (alignment == 0){ //bei 0 ist die Ausrichtung horizontal -> sonst ist sie vertikal ^
                 x = generateRandom(5, 1);
                 y = generateRandom(7, 1);
-                boolean aboveShip = map[x-1][y].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+2][y].getCellValue().equals("-") && map[x+3][y].getCellValue().equals("-");
-                boolean shipItSelf = map[x-1][y-1].getCellValue().equals("-") && map[x][y-1].getCellValue().equals("-") && map[x+1][y-1].getCellValue().equals("-") && map[x+2][y-1].getCellValue().equals("-") && map[x+3][y-1].getCellValue().equals("-");
-                boolean belowShip = map[x-1][y+1].getCellValue().equals("-") && map[x][y+1].getCellValue().equals("-") && map[x+1][y+1].getCellValue().equals("-") && map[x+2][y+1].getCellValue().equals("-") && map[x+3][y+1].getCellValue().equals("-");
-                if (aboveShip && shipItSelf && belowShip){
+                if (validator.generateShip(map, alignment, 1, 3, x, y)){
 
                     map[x][y].setCellValue("X");
                     map[x + 1][y].setCellValue("X");
