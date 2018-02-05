@@ -27,12 +27,12 @@ public class dotComField {
         int x;
         int y;
         int countShips = 0;
-        int view;
+        int alignment;
 
         while (countShips < amount) {
-            view = generateRandom(2, 0);
+            alignment = generateRandom(2, 0);
 
-            if (view == 0){ //bei 0 ist die Ausrichtung horizontal -> sonst ist sie vertikal ^
+            if (alignment == 0){ //bei 0 ist die Ausrichtung horizontal -> sonst ist sie vertikal ^
                 x = generateRandom(5, 1);
                 y = generateRandom(7, 1);
                 boolean aboveShip = map[x-1][y].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+2][y].getCellValue().equals("-") && map[x+3][y].getCellValue().equals("-");
