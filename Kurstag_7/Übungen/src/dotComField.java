@@ -48,11 +48,7 @@ public class dotComField {
             } else{
                 x = generateRandom(7, 1);
                 y = generateRandom(5, 1);
-                boolean leftOfShip = map[x][y-1].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x][y+1].getCellValue().equals("-") && map[x][y+2].getCellValue().equals("-") && map[x][y+3].getCellValue().equals("-");
-                boolean shipItSelf = map[x-1][y-1].getCellValue().equals("-") && map[x-1][y].getCellValue().equals("-") && map[x-1][y+1].getCellValue().equals("-") && map[x-1][y+2].getCellValue().equals("-") && map[x-1][y+3].getCellValue().equals("-");
-                boolean rightOfShip = map[x+1][y-1].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+1][y+1].getCellValue().equals("-") && map[x+1][y+2].getCellValue().equals("-") && map[x+1][y+3].getCellValue().equals("-");
-                if (leftOfShip && shipItSelf && rightOfShip
-                ){
+                if (validator.generateShip(map, alignment, 1, 3, x, y)){
                     map[x][y].setCellValue("X");
                     map[x][y + 1].setCellValue("X");
                     map[x][y + 2].setCellValue("X");

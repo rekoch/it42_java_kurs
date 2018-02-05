@@ -17,12 +17,24 @@ public class dotComSpaceValidator {
     private boolean checkForSpace(dotComCell[][] field, int alignent, int amountOfShips, int size, int x, int y){
         List<Boolean> values = new ArrayList<>();
 
-        for (int i = -1; i < 1+size; i++){
-            for (int j = -1; j < 2; j++){
-                if(field[x+i][y+j].getCellValue().equals("-")){
-                    values.add(true);
-                } else {
-                    values.add(false);
+        if(alignent == 0){
+            for (int i = -1; i < 1+size; i++){
+                for (int j = -1; j < 2; j++){
+                    if(field[x+i][y+j].getCellValue().equals("-")){
+                        values.add(true);
+                    } else {
+                        values.add(false);
+                    }
+                }
+            }
+        }else {
+            for (int i = -1; i < 2; i++){
+                for (int j = -1; j < (1+size); j++){
+                    if(field[x+i][y+j].getCellValue().equals("-")){
+                        values.add(true);
+                    } else {
+                        values.add(false);
+                    }
                 }
             }
         }
