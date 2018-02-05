@@ -35,10 +35,10 @@ public class dotComField {
             if (view == 0){ //bei 0 ist die Ausrichtung horizontal -> sonst ist sie vertikal ^
                 x = generateRandom(5, 1);
                 y = generateRandom(7, 1);
-                if (map[x-1][y].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+2][y].getCellValue().equals("-") && map[x+3][y].getCellValue().equals("-") &&
-                    map[x-1][y-1].getCellValue().equals("-") && map[x][y-1].getCellValue().equals("-") && map[x+1][y-1].getCellValue().equals("-") && map[x+2][y-1].getCellValue().equals("-") && map[x+3][y-1].getCellValue().equals("-") &&
-                    map[x-1][y+1].getCellValue().equals("-") && map[x][y+1].getCellValue().equals("-") && map[x+1][y+1].getCellValue().equals("-") && map[x+2][y+1].getCellValue().equals("-") && map[x+3][y+1].getCellValue().equals("-")
-                ){
+                boolean aboveShip = map[x-1][y].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+2][y].getCellValue().equals("-") && map[x+3][y].getCellValue().equals("-");
+                boolean shipItSelf = map[x-1][y-1].getCellValue().equals("-") && map[x][y-1].getCellValue().equals("-") && map[x+1][y-1].getCellValue().equals("-") && map[x+2][y-1].getCellValue().equals("-") && map[x+3][y-1].getCellValue().equals("-");
+                boolean belowShip = map[x-1][y+1].getCellValue().equals("-") && map[x][y+1].getCellValue().equals("-") && map[x+1][y+1].getCellValue().equals("-") && map[x+2][y+1].getCellValue().equals("-") && map[x+3][y+1].getCellValue().equals("-");
+                if (aboveShip && shipItSelf && belowShip){
 
                     map[x][y].setCellValue("X");
                     map[x + 1][y].setCellValue("X");
@@ -49,9 +49,10 @@ public class dotComField {
             } else{
                 x = generateRandom(7, 1);
                 y = generateRandom(5, 1);
-                if (map[x][y-1].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x][y+1].getCellValue().equals("-") && map[x][y+2].getCellValue().equals("-") && map[x][y+3].getCellValue().equals("-") &&
-                    map[x-1][y-1].getCellValue().equals("-") && map[x-1][y].getCellValue().equals("-") && map[x-1][y+1].getCellValue().equals("-") && map[x-1][y+2].getCellValue().equals("-") && map[x-1][y+3].getCellValue().equals("-") &&
-                    map[x+1][y-1].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+1][y+1].getCellValue().equals("-") && map[x+1][y+2].getCellValue().equals("-") && map[x+1][y+3].getCellValue().equals("-")
+                boolean leftOfShip = map[x][y-1].getCellValue().equals("-") && map[x][y].getCellValue().equals("-") && map[x][y+1].getCellValue().equals("-") && map[x][y+2].getCellValue().equals("-") && map[x][y+3].getCellValue().equals("-");
+                boolean shipItSelf = map[x-1][y-1].getCellValue().equals("-") && map[x-1][y].getCellValue().equals("-") && map[x-1][y+1].getCellValue().equals("-") && map[x-1][y+2].getCellValue().equals("-") && map[x-1][y+3].getCellValue().equals("-");
+                boolean rightOfShip = map[x+1][y-1].getCellValue().equals("-") && map[x+1][y].getCellValue().equals("-") && map[x+1][y+1].getCellValue().equals("-") && map[x+1][y+2].getCellValue().equals("-") && map[x+1][y+3].getCellValue().equals("-");
+                if (leftOfShip && shipItSelf && rightOfShip
                 ){
                     map[x][y].setCellValue("X");
                     map[x][y + 1].setCellValue("X");
