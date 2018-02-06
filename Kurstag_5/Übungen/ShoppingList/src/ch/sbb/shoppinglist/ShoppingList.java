@@ -20,7 +20,7 @@ public class ShoppingList {
 
 
     //Siehe auch bei der main-Klasse. Irgendwie wird der Code nicht ausgeführt. Wieso?
-    //Diese Methode muss zuerst noch in der Main Klasse aufgerufen werden.
+    //Diese Methode muss zuerst noch in der Main_Schiffe Klasse aufgerufen werden.
     public void startShoppApp() {
         getAllAvailableProducts();
 
