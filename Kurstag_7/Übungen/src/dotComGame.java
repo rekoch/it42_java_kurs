@@ -44,25 +44,19 @@ public class dotComGame {
         gameMap.getMap()[xInMap][yInMap] = hiddenmap.getMap()[xInMap][yInMap];
         if(gameMap.getMap()[xInMap][yInMap].getCellValue().equals("X")){
             System.out.println("Treffer");
+            gameMap.setDotComAmountInField(gameMap.getDotComAmountInField()+1);
             checkForWin();
         }else{
+            gameMap.getMap()[xInMap][yInMap].setCellValue("O");
             System.out.println("Daneben");
         }
     }
 
     private void checkForWin(){
-        int dotComsInMap = 0;
-        for (int x = 0; x < 9; x++){
-            for (int y = 0; y < 9; y++){
-                if(gameMap.getMap()[x][y].getCellValue().equals("X")){
-                    dotComsInMap++;
-                    if(dotComsInMap == hiddenmap.getDotComsInField()){
-                        gameMap.showMap(1, 8);
-                        System.out.println("Sieg");
-                        System.exit(0);
-                    }
-                }
-            }
+        if(gameMap.getDotComAmountInField() == hiddenmap.getDotComAmountInField()){
+            gameMap.showMap(1, 8);
+            System.out.println("Sieg");
+            System.exit(0);
         }
     }
 }

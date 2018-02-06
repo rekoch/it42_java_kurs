@@ -4,7 +4,7 @@
 
 public class dotComField {
     private dotComCell[][] map = new dotComCell[9][9];
-    private int dotComsInField = 0;
+    private int dotComAmountInField = 0;
     private dotComShipGenerator validator = new dotComShipGenerator();
 
     public dotComField(){
@@ -21,8 +21,9 @@ public class dotComField {
     }
 
     public void generateTripleShips(int amount){
-        map = validator.generateShip(map, amount, 5);
-        dotComsInField += amount*3;
+        int size = 2;
+        map = validator.generateShip(map, amount, size);
+        dotComAmountInField += amount*size;
     }
 
     public void showMap(int from, int to){
@@ -47,7 +48,11 @@ public class dotComField {
         return map;
     }
 
-    public int getDotComsInField() {
-        return dotComsInField;
+    public void setDotComAmountInField(int dotComAmountInField) {
+        this.dotComAmountInField = dotComAmountInField;
+    }
+
+    public int getDotComAmountInField() {
+        return dotComAmountInField;
     }
 }
