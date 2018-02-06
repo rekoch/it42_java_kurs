@@ -3,17 +3,20 @@
  */
 
 public class dotComField {
-    private dotComCell[][] map = new dotComCell[9][9];
+    private dotComCell[][] map;
     private int dotComAmountInField = 0;
     private dotComShipGenerator validator = new dotComShipGenerator();
+    private int fieldSize;
 
-    public dotComField(){
-       initMap();
+    public dotComField(int fieldSize){
+        this.fieldSize = fieldSize;
+        map = new dotComCell[fieldSize+2][fieldSize+2];
+        initMap();
     }
 
     private void initMap(){
-        for(int i = 0; i < 9; i++){
-            for(int j = 0; j < 9; j++){
+        for(int i = 0; i < fieldSize+2; i++){
+            for(int j = 0; j < fieldSize+2; j++){
                 map[i][j] = new dotComCell();
                 map[i][j].setCellValue("-");
             }
@@ -21,13 +24,13 @@ public class dotComField {
     }
 
     public void generateTripleShips(int amount){
-        int size = 2;
+        int size = 3;
         map = validator.generateShip(map, amount, size);
         dotComAmountInField += amount*size;
     }
 
     public void showMap(int from, int to){
-        for (int h = 0; h < 7; h++){
+        for (int h = 0; h < map.length-2; h++){
             System.out.print("\t" + h);
         }
         int temp = 0;

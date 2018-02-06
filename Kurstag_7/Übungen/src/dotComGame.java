@@ -6,11 +6,16 @@ import java.util.Scanner;
 
 public class dotComGame {
     private Scanner scanner = new Scanner(System.in);
-    private dotComField gameMap = new dotComField();
-    private dotComField hiddenmap = new dotComField();
+    dotComInitializer initializer = new dotComInitializer();
+    private dotComField gameMap;
+    private dotComField hiddenmap;
     private String pattern = "[0-9]+";
+    int fieldSize;
 
     public dotComGame(){
+        fieldSize = initializer.initGame();
+        gameMap = new dotComField(fieldSize);
+        hiddenmap = new dotComField(fieldSize);
         hiddenmap.generateTripleShips(3);
         gameLoop();
     }
@@ -41,20 +46,25 @@ public class dotComGame {
     private void coverUp(int x, int y){
         int xInMap = x+1;
         int yInMap = y+1;
-        gameMap.getMap()[xInMap][yInMap] = hiddenmap.getMap()[xInMap][yInMap];
-        if(gameMap.getMap()[xInMap][yInMap].getCellValue().equals("X")){
-            System.out.println("Treffer");
-            gameMap.setDotComAmountInField(gameMap.getDotComAmountInField()+1);
-            checkForWin();
+        if(!hiddenmap.getMap()[xInMap][yInMap].isCoveredUp()){
+            gameMap.getMap()[xInMap][yInMap] = hiddenmap.getMap()[xInMap][yInMap];
+            hiddenmap.getMap()[xInMap][yInMap].setCoveredUp(true);
+            if(gameMap.getMap()[xInMap][yInMap].getCellValue().equals("X")){
+                System.out.println("Treffer");
+                gameMap.setDotComAmountInField(gameMap.getDotComAmountInField()+1);
+                checkForWin();
+            }else{
+                gameMap.getMap()[xInMap][yInMap].setCellValue("O");
+                System.out.println("Daneben");
+            }
         }else{
-            gameMap.getMap()[xInMap][yInMap].setCellValue("O");
-            System.out.println("Daneben");
+            System.out.println("Bereits Aufgedeckt");
         }
     }
 
     private void checkForWin(){
         if(gameMap.getDotComAmountInField() == hiddenmap.getDotComAmountInField()){
-            gameMap.showMap(1, 8);
+            gameMap.showMap(1, fieldSize+1);
             System.out.println("Sieg");
             System.exit(0);
         }
