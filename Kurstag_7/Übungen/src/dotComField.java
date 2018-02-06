@@ -2,13 +2,10 @@
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2018.
  */
 
-import java.util.Random;
-
 public class dotComField {
-    Random random = new Random();
     private dotComCell[][] map = new dotComCell[9][9];
     private int dotComsInField = 0;
-    private dotComSpaceValidator validator = new dotComSpaceValidator();
+    private dotComShipGenerator validator = new dotComShipGenerator();
 
     public dotComField(){
        initMap();
@@ -24,43 +21,8 @@ public class dotComField {
     }
 
     public void generateTripleShips(int amount){
-
-        int x;
-        int y;
-        int countShips = 0;
-        int alignment;
-
-        while (countShips < amount) {
-            alignment = generateRandom(2, 0);
-            System.out.println(alignment);
-
-            if (alignment == 0){ //bei 0 ist die Ausrichtung horizontal -> sonst ist sie vertikal ^
-                x = generateRandom(5, 1);
-                y = generateRandom(7, 1);
-                if (validator.generateShip(map, alignment, 1, 3, x, y)){
-
-                    map[x][y].setCellValue("X");
-                    map[x + 1][y].setCellValue("X");
-                    map[x + 2][y].setCellValue("X");
-                    countShips++;
-                    dotComsInField += 3;
-                }
-            } else{
-                x = generateRandom(7, 1);
-                y = generateRandom(5, 1);
-                if (validator.generateShip(map, alignment, 1, 3, x, y)){
-                    map[x][y].setCellValue("X");
-                    map[x][y + 1].setCellValue("X");
-                    map[x][y + 2].setCellValue("X");
-                    countShips++;
-                    dotComsInField += 3;
-                }
-            }
-        }
-    }
-
-    private int generateRandom(int bound, int offset){
-        return random.nextInt(bound) + offset;
+        map = validator.generateShip(map, amount, 5);
+        dotComsInField += amount*3;
     }
 
     public void showMap(int from, int to){

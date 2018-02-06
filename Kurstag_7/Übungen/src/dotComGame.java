@@ -17,8 +17,8 @@ public class dotComGame {
 
     private void gameLoop(){
         while(true){
-            hiddenmap.showMap(1, 8);
-            gameMap.showMap(1, 8);
+            hiddenmap.showMap(1, hiddenmap.getMap().length-1);
+            gameMap.showMap(1, gameMap.getMap().length-1);
             System.out.println("Geben Sie die Koordinaten ein (x y): (Bsp: 5 5)");
             String input = scanner.nextLine();
             String[] inputs = input.split(" ");
