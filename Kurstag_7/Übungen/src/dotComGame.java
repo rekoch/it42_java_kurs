@@ -16,7 +16,10 @@ public class dotComGame {
         fieldSize = initializer.initGame();
         gameMap = new dotComField(fieldSize);
         hiddenmap = new dotComField(fieldSize);
-        hiddenmap.generateTripleShips(3);
+        hiddenmap.generateShips(1, 4);
+        hiddenmap.generateShips(2, 3);
+        hiddenmap.generateShips(3, 2);
+        hiddenmap.generateShips(4, 1);
         gameLoop();
     }
 

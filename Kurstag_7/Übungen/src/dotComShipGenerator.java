@@ -11,7 +11,7 @@ public class dotComShipGenerator {
     private dotComCell[][] map;
     private int x;
     private int y;
-    int countShips = 0;
+    private int countShips = 0;
 
     public dotComCell[][] generateShip(dotComCell[][] field, int amountOfShips, int size){
 
@@ -74,6 +74,10 @@ public class dotComShipGenerator {
             }
             countShips++;
         }
+    }
+
+    public void resetCountShips(){
+        countShips = 0;
     }
 
     private int generateRandom(int bound, int offset){

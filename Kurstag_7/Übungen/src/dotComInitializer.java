@@ -15,14 +15,14 @@ public class dotComInitializer {
         boolean isCorrect = false;
         int fieldSize = 8;
         while(!isCorrect){
-            System.out.println("\nGeben Sie die Feldgrösse an. Sie muss mindestens 8 sein");
+            System.out.println("\nGeben Sie die Feldgrösse an. Sie muss mindestens 9 sein");
             String input = scanner.nextLine();
             if(input.matches("[0-9]+")){
                 fieldSize = Integer.parseInt(input);
                 if(fieldSize >= 8){
                     isCorrect = true;
                 }else{
-                    System.out.println("Falsche Eingabe");
+                    System.out.println("zu klein");
                 }
             }else{
                 System.out.println("Falsche Eingabe");
