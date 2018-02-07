@@ -21,7 +21,7 @@ public class Field {
     Random rnd = new Random();
 /*-------------------------------------METHODEN------------------------------------------------------*/
 
-    public void generateField() {
+    public String[][] generateField() {
         // das Array ausgeben
         for ( int zeile = 0; zeile < showArray.length; zeile++ )
         {
@@ -29,9 +29,10 @@ public class Field {
                 System.out.print( showArray[zeile][spalte] + "  ");
             System.out.println();
         }
+        return showArray;
     }
 
-    public void fillField(){
+    public String[][] fillField(){
         for(int k = 0; k <4;k++) {
             //koordinaten überprüfen
             int coordinatesX = rnd.nextInt(9) + 1;
@@ -76,11 +77,12 @@ public class Field {
 
 
             //ausgabe
-        for ( int zeile = 0; zeile < workArray.length; zeile++ )
+        /*for ( int zeile = 0; zeile < workArray.length; zeile++ )
         {
             for ( int spalte=0; spalte < workArray[zeile].length; spalte++ )
                 System.out.print( workArray[zeile][spalte] + "  ");
             System.out.println();
-        }
+        }*/
+        return workArray;
     }
 }
