@@ -3,17 +3,30 @@
  */
 
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Spiel {
     public static void main(String[] args){
 
-        System.out.println("Geben sie eine Zahl ein");
-
-        Scanner sc = new Scanner(System.in);
-        String tipp = sc.next();
+        int anzahlTipps = 0;
+        Random rand = new Random();
 
         DotCom dotCom = new DotCom();
-        dotCom.prüfDich(tipp);
+
+        int randomStartPos = (int) (Math.random() * 5);
+        int[] orte = {randomStartPos, randomStartPos+1, randomStartPos+2};
+        dotCom.setZellorte(orte);
+        boolean lebt = true;
+
+        while (lebt == true){
+            String tipp = SpielHelfer.getBenutzereingabe("Geben sie eine Zahl ein");
+            String resultat = dotCom.prüfDich(tipp);
+            anzahlTipps++;
+            if (resultat.equals("Versenkt")){
+                lebt = false;
+                System.out.println("Sie haben " + anzahlTipps + "Versuche benötigt");
+            }
+        }
     }
 }
