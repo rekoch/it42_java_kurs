@@ -10,41 +10,30 @@ public class DotCom {
     private int [] zellorte;
     private int anzahltreffer = 0;
 
+    public String prüfDich(String stringtipp) {
 
-    public DotCom(){
-        this.zellorte = zellorte;
-        this.anzahltreffer = anzahltreffer;
-    }
+        int tipp = Integer.parseInt(stringtipp);
+        String return_string = "Vorbei";
 
-    public String prüfDich(String tipp) {
+        for (int zelle : zellorte) {
 
-        int tipp_int = Integer.parseInt(tipp);
-        String return_string = "";
-
-        for (int i = 0; i < zellorte.length; ++i)
-        {
-            List<int[]> zellorte_list = Arrays.asList(zellorte);  //konvertiert zellorte zu einer "List", damit compare funktioniert
-
-            boolean treffer = zellorte_list.contains(tipp_int);
-
-            if (treffer){
+            if (tipp == zelle){
+                return_string = "Treffer";
                 anzahltreffer++;
-                if (anzahltreffer <= 3){
-                    return_string = "Versenkt";
-                }
-                else{
-                    return_string  = "Treffer";
-                }
-            }
-            else{
-                return_string = "Vorbei";
+                break;
             }
         }
+
+        if (anzahltreffer == zellorte.length) {
+            return_string = "Versenkt";
+        }
+        System.out.println(return_string);
         return return_string;
     }
 
+
     public void setZellorte(int[] orte){
 
-        this.zellorte = orte;
+        zellorte = orte;
     }
 }
