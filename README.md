@@ -1,4 +1,4 @@
-# it42_java_kurs 
+# it42_java_kurs
 Dieses Repo dient für den Austausch der Uebungen, welche durch die Teilnehmenden des IT42 Java Kurs erarbeitet werden.
 
 Folgender Workflow ist dafür vorgesehen:
