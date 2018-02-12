@@ -1,6 +1,6 @@
 public class Cell {
 
-    public void ckeckCell(int Y, int X, String[][] showArray, String[][] workArray){
+    public void ckeckCell(int Y, int X, String[][] workArray, String[][] showArray){
         if(workArray[Y][X] =="X"){
             System.out.println("\nDu hast ein Schiff getroffen");
             showArray[Y][X] = "X";
