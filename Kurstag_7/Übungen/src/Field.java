@@ -3,7 +3,7 @@ import java.util.Random;
 public class Field {
 
 /*-------------------------------------DEKLARIEREN--------------------------------------------------*/
-    String[][] showArray = {                                //Sehr hässliche Möglichkeit zum Deklarieren
+    String[][] showArray = {                                //Sehr hässliche Möglichkeit zum Deklarieren => besser in schlaufe
             { " ","1","2","3","4","5","6","7","8","9"},
             { "1"," "," "," "," "," "," "," "," "," "},
             { "2"," "," "," "," "," "," "," "," "," "},
@@ -16,7 +16,7 @@ public class Field {
             { "9"," "," "," "," "," "," "," "," "," "},
     };
 
-    String[][] workArray = {                                //Sehr hässliche Möglichkeit zum Deklarieren
+    String[][] workArray = {                                //Sehr hässliche Möglichkeit zum Deklarieren => besser in schlaufe
             { " ","1","2","3","4","5","6","7","8","9"},
             { "1"," "," "," "," "," "," "," "," "," "},
             { "2"," "," "," "," "," "," "," "," "," "},
