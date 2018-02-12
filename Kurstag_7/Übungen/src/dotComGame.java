@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class dotComGame {
     private Scanner scanner = new Scanner(System.in);
-    dotComInitializer initializer = new dotComInitializer();
+    private dotComInitializer initializer = new dotComInitializer();
     private dotComField gameMap;
     private dotComField hiddenmap;
     private String pattern = "[0-9]+";
-    int fieldSize;
+    private int fieldSize;
 
     public dotComGame(){
         fieldSize = initializer.initGame();
