@@ -40,29 +40,31 @@ public class Main {
         zeitraum = new Zeitraum(new Datum(1), new Datum(7));
         Buchung buchung1 = hotel.erstelleBuchung(zeitraum, einzelgast, Zimmer.FEATURE_MEERSICHT);
 
-        if (buchung1.istOkay()) { // es gibt also noch ein solches freies Zimmer
-            // er bucht, zahlt und checkt ein
-            hotel.bestaetige(buchung1);
-            hansMueller.bezahle(buchung1);
-            hotel.checkIn(hansMueller, buchung1);
-            // check-out modellieren wir nicht, wir werfen ihn raus, wenn er am Ende der Buchungsperiode nicht eh selber geht - und bezahlt hat er ja schon
-        }
+        System.out.println(buchung1.istOkay()); // --> true
+        // es gibt also noch ein solches freies Zimmer
+        // er bucht, zahlt und checkt ein
+        hotel.bestaetige(buchung1);
+        hansMueller.bezahle(buchung1);
+        hotel.checkIn(hansMueller, buchung1);
+        // check-out modellieren wir nicht, wir werfen ihn raus, wenn er am Ende der Buchungsperiode nicht eh selber geht - und bezahlt hat er ja schon
+
 
         // Am Tag 2 bucht ein Ehepaar für Übernachtungen ab Tag 3 bis Tag 5, checkt also noch nicht ein, und zahlt auch noch nicht
         Datum tag2 = new Datum(2);
         zeitraum = new Zeitraum(3, 5);
         Buchung buchung2 = hotel.erstelleBuchung(zeitraum, paar);
 
-        if (buchung2.istOkay()) {
-            hotel.bestaetige(buchung2);
-            // checkin ginge jetzt noch nicht, weil noch nicht bezahlt wurde
+        System.out.println(buchung2.istOkay()); // --> true
 
-            Datum tag3 = new Datum(3);
-            fritzFrei.bezahle(buchung2);
-            // jetzt können die beiden einchecken:
-            hotel.checkIn(fritzFrei, buchung2);
-            hotel.checkIn(fridaFrei, buchung2);
-        }
+        // Hotel kann Buchung bestätigen
+        hotel.bestaetige(buchung2);
+        // checkin ginge jetzt noch nicht, weil noch nicht bezahlt wurde
+
+        Datum tag3 = new Datum(3);
+        fritzFrei.bezahle(buchung2);
+        // jetzt können die beiden einchecken:
+        hotel.checkIn(fritzFrei, buchung2);
+        hotel.checkIn(fridaFrei, buchung2);
 
 
         // Jetzt schaut der Hotelier, welche Zimmer denn vom 4. auf den 5. Tag noch frei sind:
@@ -78,23 +80,22 @@ public class Main {
         zeitraum = new Zeitraum(3, 4);
         Buchung buchung3 = hotel.erstelleBuchung(zeitraum, gruppe);
 
-        if (!buchung3.istOkay()) {
-            // hoppla, das geht nicht, es gibt nur noch das freie Einzelzimmer.
-            // Die Gruppe entschliesst sich, schon mal für den selben Tag in einer Woche zu buchen:
-            zeitraum = new Zeitraum(10, 11);
-            buchung3 = hotel.erstelleBuchung(zeitraum, gruppe);
-            if (buchung3.istOkay()) {
-                // in einer Woche ist im Moment noch alles frei, deshalb bestaetigt das Alphatier der Gruppe:
-                hotel.bestaetige(buchung3);
+        System.out.println(buchung3.istOkay()); // --> false
+        // hoppla, das geht nicht, es gibt nur noch das freie Einzelzimmer, verwirf deshalb diese Buchung.
+        // Die Gruppe entschliesst sich, schon mal für den selben Tag in einer Woche zu buchen:
+        zeitraum = new Zeitraum(10, 11);
+        buchung3 = hotel.erstelleBuchung(zeitraum, gruppe);
 
-                // wenn er zahlt ...
-                ernstAmmann.bezahle(buchung3);
-                // ... wird die Gruppe dann in einer Woche einchecken können:
-                hotel.checkIn(ernstAmmann, buchung3);
-                hotel.checkIn(annaBauer, buchung3);
-                hotel.checkIn(viktorCotti, buchung3);
-                hotel.checkIn(emmaDubler, buchung3);
-            }
-        }
+        System.out.println(buchung3.istOkay()); // liefert true
+        // in einer Woche ist im Moment noch alles frei, deshalb bestaetigt das Alphatier der Gruppe:
+        hotel.bestaetige(buchung3);
+
+        // wenn er zahlt ...
+        ernstAmmann.bezahle(buchung3);
+        // ... wird die Gruppe dann in einer Woche einchecken können:
+        hotel.checkIn(ernstAmmann, buchung3);
+        hotel.checkIn(annaBauer, buchung3);
+        hotel.checkIn(viktorCotti, buchung3);
+        hotel.checkIn(emmaDubler, buchung3);
     }
 }

@@ -14,8 +14,6 @@ public class Datum {
         this.tagNummer = tagNummer;
     }
 
-
-
     public boolean kommtVor(Datum anderesDatum) {
         return tagNummer < anderesDatum.tagNummer;
     }
