@@ -1,4 +1,4 @@
 package Kurstag_9.Übungen.Examples.src.ch.sbb.it42.rollenspiel.gegenstaende;
 
-public class Staerketrank {
+public class Staerketrank extends Traenke {
 }

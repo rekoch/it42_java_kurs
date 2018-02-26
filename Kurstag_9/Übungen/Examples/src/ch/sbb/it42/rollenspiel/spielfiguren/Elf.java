@@ -12,6 +12,8 @@ public class Elf extends Spielfigur {
     /**
      * Nur Elf:
      * Kampfwert + (Zauberwert / 2)
+     * Nur Elf und Goblin:
+     * Wenn Bogen als Waffe aktiv Kampfwert um 50% erhöht.
      * @return Kampfwert der Spielfigur
      */
     public int getKampfwert(){

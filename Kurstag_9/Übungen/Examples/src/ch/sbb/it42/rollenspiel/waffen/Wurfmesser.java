@@ -1,4 +1,4 @@
 package Kurstag_9.Übungen.Examples.src.ch.sbb.it42.rollenspiel.waffen;
 
-public class Wurfmesser {
+public class Wurfmesser extends Fernkampfwaffen {
 }
