@@ -52,7 +52,7 @@ public class Spielfigur {
      * Spielfiguren können im Kampf Gegenstände benutzen.
      * @return
      */
-    public Gegenstände benutzen(){
+    public Gegenstände benutzeGegenstand(){
 
     }
 
