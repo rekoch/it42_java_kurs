@@ -1,4 +1,4 @@
-package ch.sbb.hotelreservation;
+package Kurstag_6.Übungen.it42_kurstag_6.src.ch.sbb.hotelreservation;
 
 
 import java.util.ArrayList;
