@@ -4,7 +4,7 @@
 
 
 /**
- * Zeigt die Verwendung der Sudoku-Klasse auf.
+ * Zeigt die Verwendung der Sudoku-Klassen auf.
  */
 public class Main {
 
@@ -16,24 +16,25 @@ public class Main {
         //...
 
         sudoku.setzeWert(1, 3, 2);
-        System.out.println(sudoku.isFertigAusgefuellt());
-        System.out.println(sudoku.isKorrektAusgefuellt());
-        System.out.println(sudoku.isGeloest());
+        System.out.println(sudoku.istFertigAusgefuellt());
+        System.out.println(sudoku.istKonfliktFrei());
+        System.out.println(sudoku.istGeloest());
 
         sudoku.setzeWert(2, 6, 4);
-        System.out.println(sudoku.isFertigAusgefuellt());
-        System.out.println(sudoku.isKorrektAusgefuellt());
-        System.out.println(sudoku.isGeloest());
+        System.out.println(sudoku.istFertigAusgefuellt());
+        System.out.println(sudoku.istKonfliktFrei());
+        System.out.println(sudoku.istGeloest());
 
         sudoku.setzeWert(2, 6, null); // Wert zuruecksetzen
-        System.out.println(sudoku.isFertigAusgefuellt());
-        System.out.println(sudoku.isKorrektAusgefuellt());
-        System.out.println(sudoku.isGeloest());
+        System.out.println(sudoku.istFertigAusgefuellt());
+        System.out.println(sudoku.istKonfliktFrei());
+        System.out.println(sudoku.istGeloest());
 
         sudoku.setzeWert(7, 5, 2);
-        System.out.println(sudoku.isFertigAusgefuellt());
-        System.out.println(sudoku.isKorrektAusgefuellt());
-        System.out.println(sudoku.isGeloest());
+        System.out.println(sudoku.istFertigAusgefuellt());
+        System.out.println(sudoku.istKonfliktFrei());
+        System.out.println(sudoku.istGeloest());
+        //...
 
         sudoku.zeigen();
     }
