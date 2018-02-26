@@ -13,7 +13,7 @@ public class Hotel {
     public void reserviereZimmer(int platze){
         for(int i = 0; i < zimmer.size(); i++){
             if(zimmer.get(i).getPlaetze() == platze){
-                    zimmer.get(i).zimmerReservieren();
+                    //zimmer.get(i).zimmerReservieren();
                     return;
             }
         }
