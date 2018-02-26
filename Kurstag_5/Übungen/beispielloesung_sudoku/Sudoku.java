@@ -25,7 +25,7 @@ public class Sudoku {
         }
     }
 
-    public boolean isFertigAusgefuellt() {
+    public boolean istFertigAusgefuellt() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 Feld f = feld[i][j];
@@ -37,7 +37,8 @@ public class Sudoku {
         return true;
     }
 
-    public boolean isKorrektAusgefuellt() {
+    public boolean istKonfliktFrei() {
+        // --> Implementation ist nicht so wichtig
         for (int i = 0; i < 9; i++) {
             Feld[] zeile = new Feld[]{
                     feld[i][0],
@@ -89,8 +90,8 @@ public class Sudoku {
         return true;
     }
 
-    public boolean isGeloest() {
-        return isFertigAusgefuellt() && isKorrektAusgefuellt();
+    public boolean istGeloest() {
+        return istFertigAusgefuellt() && istKonfliktFrei();
     }
 
     private boolean hatDoppelteWerte(Feld[] feldGruppe) {
