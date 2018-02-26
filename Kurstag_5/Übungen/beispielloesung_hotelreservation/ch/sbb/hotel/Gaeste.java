@@ -4,6 +4,10 @@
 
 package ch.sbb.hotel;
 
+
+/**
+ * Ein Ansammlung von Menschen: eine/r, zwei oder mehr.
+ */
 public class Gaeste {
 
     private Person[] personen;

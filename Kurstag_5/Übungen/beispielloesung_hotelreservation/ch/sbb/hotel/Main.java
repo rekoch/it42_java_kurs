@@ -20,6 +20,7 @@ public class Main {
         main.zeigeVerwendungDerHotelReservation(hotel);
     }
 
+
     private void zeigeVerwendungDerHotelReservation(Hotel hotel) {
         Zeitraum zeitraum; // diese temporäre Variable wird immer wiederverwendet
 

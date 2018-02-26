@@ -6,6 +6,7 @@ package ch.sbb.hotel;
 
 
 /**
+ * Ein Zeitbereich, definiert durch den Eincheck-/Start-Tag bzw. den Auscheck-/Schluss-Tag
  * Immutable Klasse, keine Setter!
  */
 public class Zeitraum {

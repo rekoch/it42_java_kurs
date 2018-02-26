@@ -7,6 +7,10 @@ package ch.sbb.hotel;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Eine mehr oder weniger stark bestaetigte Absicht, in einem Zeitbereich mit einer bestimmten Gaestegruppe
+ * gewisse Zimmer zu belegen.
+ */
 public class Buchung {
 
     private Gaeste gaeste;
@@ -22,10 +26,6 @@ public class Buchung {
     private BigDecimal preis;
 
     private Zimmer[] zimmer;
-
-    public boolean istOkay() {
-        return okay;
-    }
 
     private Buchung() {
         // direkte Instanzierung einer Buchung unterbinden, deshalb private
@@ -47,6 +47,11 @@ public class Buchung {
         Buchung buchung = new Buchung();
         buchung.okay = false;
         return buchung;
+    }
+
+
+    public boolean istOkay() {
+        return okay;
     }
 
     public void setBestaetigt() {

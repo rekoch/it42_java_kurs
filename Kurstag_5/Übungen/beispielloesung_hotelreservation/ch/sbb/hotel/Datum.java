@@ -6,9 +6,13 @@ package ch.sbb.hotel;
 
 import java.util.Calendar;
 
+
+/**
+ * Ein bestimmter Tag, irgendwo auf der Zeitachse.
+ */
 public class Datum {
 
-    private final int tagNummer; // Die Tag-Nummer wird berechnet als die Anzahl Tage zum Beispiel ab 1.1.2000
+    private final int tagNummer; // Die Tag-Nummer wird berechnet als die Anzahl Tage ab 1.1.2000
 
     public Datum(int tagNummer) {
         this.tagNummer = tagNummer;

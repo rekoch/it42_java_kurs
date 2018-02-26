@@ -6,9 +6,12 @@ package ch.sbb.hotel;
 
 import java.math.BigDecimal;
 
+/**
+ * Ein Mensch.
+ */
 public class Person {
-    private final String vorname;
-    private final String nachname;
+    private final String vorname; // nicht unbedingt noetig
+    private final String nachname; // nicht unbedingt noetig
 
     public Person(String vorname, String nachname) {
         this.vorname = vorname;
