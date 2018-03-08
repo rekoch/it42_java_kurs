@@ -4,5 +4,5 @@
 
 package gegenstaende;
 
-public class Zauberring extends Item {
+public abstract class Zauberring extends Item {
 }

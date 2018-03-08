@@ -4,7 +4,7 @@
 
 package gegenstaende;
 
-public class Item {
+public abstract class Item {
     private int description;
     private int weight;
 }

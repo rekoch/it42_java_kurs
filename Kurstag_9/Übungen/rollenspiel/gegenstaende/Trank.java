@@ -4,5 +4,8 @@
 
 package gegenstaende;
 
-public class Trank extends Item {
+import spielfiguren.Player;
+
+public abstract class Trank extends Item {
+    public abstract void usePot(Player player);
 }

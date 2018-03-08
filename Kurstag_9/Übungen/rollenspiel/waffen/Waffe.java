@@ -4,7 +4,7 @@
 
 package waffen;
 
-public class Waffe {
+public abstract class Waffe {
     private int attackPoints;
     private int weight;
 
@@ -17,5 +17,7 @@ public class Waffe {
         return attackPoints;
     }
 
-
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
+    }
 }

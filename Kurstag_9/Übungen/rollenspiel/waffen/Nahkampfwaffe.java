@@ -4,7 +4,7 @@
 
 package waffen;
 
-public class Nahkampfwaffe extends Waffe {
+public abstract class Nahkampfwaffe extends Waffe {
     private int defensivPoints;
 
 
