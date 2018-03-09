@@ -20,4 +20,12 @@ public abstract class Waffe {
     public void setAttackPoints(int attackPoints) {
         this.attackPoints = attackPoints;
     }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
 }
