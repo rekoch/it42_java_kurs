@@ -8,8 +8,7 @@ public abstract class Nahkampfwaffe extends Waffe {
     private int defensivPoints;
 
     public Nahkampfwaffe(int attackPoints, int weight, int defensivPoints) {
-        super(attackPoints, weight);
-        this.defensivPoints = (attackPoints / 2);
+        super(attackPoints + (defensivPoints / 2), weight);
     }
 
     public int getDefensivPoints() {

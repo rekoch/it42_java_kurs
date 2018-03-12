@@ -3,7 +3,10 @@ package gegenstaende;
 import spielfiguren.Player;
 
 public class Manatrank extends Trank {
-    public Manatrank() {
+
+
+    public Manatrank(int description, int weight) {
+        super(description, weight);
     }
 
     @Override

@@ -8,6 +8,10 @@ import spielfiguren.Player;
 
 public class Heiltrank extends Trank {
 
+    public Heiltrank(int description, int weight) {
+        super(description, weight);
+    }
+
     public void usePot(Player player) {
         //int maxLifepoints = player.getMaxLifePoints();
         //if (player.getLifepoints() != maxLifepoints) {}

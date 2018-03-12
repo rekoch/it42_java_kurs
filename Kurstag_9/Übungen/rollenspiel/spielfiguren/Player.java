@@ -30,7 +30,7 @@ public abstract class Player {
         this.waffe = new Keule(5);
         this.setMaxweigt(this.getMaxweigt() - waffe.getWeight());
         this.lifepoints = lifepoints;
-        this.kampfwert = this.getWaffe().getAttackPoints() * rand.nextDouble() * ((1.1 - 0.9) + 0.9);
+        this.kampfwert = this.waffe.getAttackPoints() * (rand.nextDouble() * ((1.1 - 0.9) + 0.9));
         this.maxweigt = 50 - this.getWaffe().getWeight();
         this.mana = 0;
     }
@@ -80,10 +80,10 @@ public abstract class Player {
             this.setMaxweigt(this.getMaxweigt() + this.getWaffe().getWeight());
             this.setWaffe(waffe);
             this.setMaxweigt(this.getMaxweigt() - waffe.getWeight());
-            if (waffe.getClass().isInstance(Bogen.class) && (this.getClass().isInstance(Elf.class) || this.getClass().isInstance(Goblin.class))) {
+            if (waffe instanceof  Bogen && this instanceof Elf || this instanceof Goblin) {
                 this.setKampfwert(this.getKampfwert() * 1.5);
             }
-            if (!waffe.getClass().isInstance(Keule.class) && this.getClass().isInstance(Troll.class)) {
+            if (!(waffe instanceof Keule) && this instanceof  Troll) {
                 this.setKampfwert(this.getKampfwert() / 2);
             }
         } else {
@@ -104,15 +104,12 @@ public abstract class Player {
     public boolean kaempfeGegen(Player gegner) {
         boolean sieg = false;
         for (int runde = 1; runde < 20; runde++) {
-            if ((runde%2) == 0) {
                 gegner.setLifepoints(gegner.getLifepoints() - this.getKampfwert());
-            } else {
                 this.setLifepoints(this.getLifepoints() - gegner.getKampfwert());
-            }
-
             if (runde == 10){
                 this.cast(new Zerstörungszauber(gegner));
             }
+
 
             System.out.println("\b----------------------------------------------------------");
             System.out.println("Du hast noch " + this.getLifepoints() + " Leben");

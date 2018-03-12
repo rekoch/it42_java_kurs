@@ -12,6 +12,10 @@ import waffen.Waffe;
 public class Verteidigungsring extends Zauberring {
 
 
+    public Verteidigungsring(int description, int weight) {
+        super(description, weight);
+    }
+
     // Are rings consumable?
     @Override
     public void equip(Player player) {
