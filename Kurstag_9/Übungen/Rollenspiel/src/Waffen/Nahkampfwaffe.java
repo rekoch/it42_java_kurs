@@ -1,4 +1,8 @@
+/*
+ * Copyright (C) Schweizerische Bundesbahnen SBB, 2018.
+ */
+
 package Waffen;
 
-public class Nahkampfwaffe {
+public class Nahkampfwaffe extends Waffe {
 }
