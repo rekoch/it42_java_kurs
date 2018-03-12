@@ -5,4 +5,7 @@
 package waffen;
 
 public class Wurfmesser extends Fernkampfwaffe {
+    public Wurfmesser(int attackPoints, int weight) {
+        super(attackPoints, weight);
+    }
 }
