@@ -15,8 +15,8 @@ import ch.sbb.it42.kt10.override.bsp.produkt.Schoggi;
 public class Main {
     public static void main(String[] args) {
         Main main = new Main();
-        main.zeigeProduktion();
         main.zeigeVerbrauch();
+        //main.zeigeProduktion();
     }
 
 
@@ -26,8 +26,10 @@ public class Main {
         GrossBaeckerei grossBaeckerei = new GrossBaeckerei();
 
         Produkt einProdukt = eineFrabrik.produziere();
-        Schoggi schoggi =  schoggiFabrik.produziere();
-        Produkt brot =    grossBaeckerei.produziere();
+        Schoggi schoggi = schoggiFabrik.produziere();
+        Produkt brot = grossBaeckerei.produziere();
+
+        System.out.println("Alle als gewoehnliche Fabrik behandeln:");
 
         Fabrik[] fabrik = new Fabrik[3];
         fabrik[0] = eineFrabrik;
@@ -60,10 +62,7 @@ public class Main {
         fabrik[2] = grossBaeckerei;
 
         for (int i = 0; i < fabrik.length; i++) {
-            fabrik[i].verbrauche(strom);
-        }
-        for (int i = 0; i < fabrik.length; i++) {
-            fabrik[i].verbrauche(energie);
+            fabrik[i].verbrauche(strom); // oder energie
         }
     }
 }

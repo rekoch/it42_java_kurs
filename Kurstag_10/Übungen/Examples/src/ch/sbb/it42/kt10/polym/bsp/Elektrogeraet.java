@@ -6,6 +6,6 @@ package ch.sbb.it42.kt10.polym.bsp;
 public class Elektrogeraet {
 
     public void starten() {
-        System.out.println("Elektrogeraet laeuft.");
+        System.out.println("Elektrogeraet gestartet.");
     }
 }
