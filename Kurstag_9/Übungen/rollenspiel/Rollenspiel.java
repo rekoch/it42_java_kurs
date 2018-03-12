@@ -5,8 +5,8 @@ import spielfiguren.Troll;
 public class Rollenspiel {
 
     public static void main(String[] args) {
-        Player ich = new Elf("Yano", 20, 150);
-        Player enemy = new Troll("Ilidan", 20);
+        Player ich = new Elf("Yano", 100, 15, 100);
+        Player enemy = new Troll("Ilidan", 100);
 
         if (ich.kaempfeGegen(enemy)){
             System.out.println("-------------");

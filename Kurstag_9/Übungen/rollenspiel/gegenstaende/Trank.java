@@ -7,5 +7,5 @@ package gegenstaende;
 import spielfiguren.Player;
 
 public abstract class Trank extends Item {
-    public abstract void usePot(Player player);
+    public abstract void use(Player player);
 }

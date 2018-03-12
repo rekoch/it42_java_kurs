@@ -5,9 +5,12 @@
 package spielfiguren;
 
 import gegenstaende.Item;
+import gegenstaende.Trank;
 import waffen.Bogen;
 import waffen.Keule;
 import waffen.Waffe;
+import zauber.Zauber;
+import zauber.Zerstörungszauber;
 
 import java.util.Random;
 
@@ -16,7 +19,8 @@ public abstract class Player {
     private double lifepoints;
     private int maxweigt;
     private double kampfwert;
-    Random rand = new Random();
+    private Random rand = new Random();
+    private int mana;
 
 
     private Waffe waffe;
@@ -28,6 +32,7 @@ public abstract class Player {
         this.lifepoints = lifepoints;
         this.kampfwert = this.getWaffe().getAttackPoints() * rand.nextDouble() * ((1.1 - 0.9) + 0.9);
         this.maxweigt = 50 - this.getWaffe().getWeight();
+        this.mana = 0;
     }
 
     public int getMaxweigt() {
@@ -62,6 +67,14 @@ public abstract class Player {
         this.kampfwert = kampfwert;
     }
 
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
     public void swapWeapon(Waffe waffe) {
         if (this.maxweigt > waffe.getWeight()) {
             this.setMaxweigt(this.getMaxweigt() + this.getWaffe().getWeight());
@@ -84,6 +97,10 @@ public abstract class Player {
         }
     }
 
+    public void cast(Zauber zauber){
+        zauber.cast(this);
+    }
+
     public boolean kaempfeGegen(Player gegner) {
         boolean sieg = false;
         for (int runde = 1; runde < 20; runde++) {
@@ -91,6 +108,10 @@ public abstract class Player {
                 gegner.setLifepoints(gegner.getLifepoints() - this.getKampfwert());
             } else {
                 this.setLifepoints(this.getLifepoints() - gegner.getKampfwert());
+            }
+
+            if (runde == 10){
+                this.cast(new Zerstörungszauber(gegner));
             }
 
             System.out.println("\b----------------------------------------------------------");
@@ -106,5 +127,9 @@ public abstract class Player {
             }
         }
         return sieg;
+    }
+
+    public void usePot(Trank trank){
+        trank.use(this);
     }
 }
