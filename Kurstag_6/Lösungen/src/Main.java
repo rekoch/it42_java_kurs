@@ -1,3 +1,6 @@
 public class Main {
-    Hotel hotel = new Hotel();
+    public static void main(String[] args) {
+        Hotel hotel = new Hotel();
+    }
 }
+
