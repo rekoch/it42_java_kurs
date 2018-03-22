@@ -6,6 +6,7 @@ package ch.sbb.it42.abstr;
 
 public class Main {
 
+
     public static void main(String[] args) {
         Elektrogeraet eg1 = new Elektrogeraet();
         Elektrogeraet eg2 = new Foen();
