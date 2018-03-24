@@ -26,7 +26,7 @@ public class Main {
         doubleDuplikatFinder.add(new Double(42.0));
 
         Object doubleDuplikat = doubleDuplikatFinder.getIrgendeinDuplikat();
-        System.out.println("Double duplikat: " + doubleDuplikat);
+        System.out.println("Double-Duplikat: " + doubleDuplikat);
 
         //geht nicht:
         //doubleDuplikatFinder.add("Müller");
