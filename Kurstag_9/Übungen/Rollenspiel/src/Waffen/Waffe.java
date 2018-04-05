@@ -5,4 +5,7 @@
 package Waffen;
 
 public class Waffe {
+    private double angriffswert;
+    private int gewicht;
+
 }

@@ -4,5 +4,5 @@
 
 package Gegenstände;
 
-public class Verteidigungsring {
+public class Verteidigungsring extends Ring {
 }

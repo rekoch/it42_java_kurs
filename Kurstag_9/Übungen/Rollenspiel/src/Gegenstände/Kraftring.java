@@ -4,5 +4,5 @@
 
 package Gegenstände;
 
-public class Kraftring {
+public class Kraftring extends Ring {
 }

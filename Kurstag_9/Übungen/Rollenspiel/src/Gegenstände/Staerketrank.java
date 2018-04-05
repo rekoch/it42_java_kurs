@@ -4,5 +4,5 @@
 
 package Gegenstände;
 
-public class Staerketrank {
+public class Staerketrank extends Trank {
 }

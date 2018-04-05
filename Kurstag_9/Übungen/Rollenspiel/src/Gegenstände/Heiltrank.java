@@ -4,5 +4,5 @@
 
 package Gegenstände;
 
-public class Heiltrank {
+public class Heiltrank extends Trank {
 }

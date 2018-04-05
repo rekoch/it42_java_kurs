@@ -2,7 +2,7 @@
  * Copyright (C) Schweizerische Bundesbahnen SBB, 2018.
  */
 
-package Spielfiguren;
+package Gegenstände;
 
-public class Mensch extends Spielfigur {
+public class Ring extends Gegenstand {
 }

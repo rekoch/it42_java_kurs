@@ -5,4 +5,5 @@
 package Waffen;
 
 public class Nahkampfwaffe extends Waffe {
+    private double verteidigungswert;
 }
