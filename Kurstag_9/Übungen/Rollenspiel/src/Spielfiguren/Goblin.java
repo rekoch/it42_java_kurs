@@ -5,4 +5,7 @@
 package Spielfiguren;
 
 public class Goblin extends Spielfigur {
+    public Goblin(String name) {
+        super(name);
+    }
 }

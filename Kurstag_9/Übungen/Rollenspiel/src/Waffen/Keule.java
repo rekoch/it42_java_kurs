@@ -5,4 +5,8 @@
 package Waffen;
 
 public class Keule extends Nahkampfwaffe {
+    public Keule() {
+        setAngriffswert(5);
+        setVerteidigungswert(5);
+    }
 }

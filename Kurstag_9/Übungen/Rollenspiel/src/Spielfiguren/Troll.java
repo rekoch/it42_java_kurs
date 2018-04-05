@@ -5,4 +5,7 @@
 package Spielfiguren;
 
 public class Troll extends Spielfigur {
+    public Troll(String name) {
+        super(name);
+    }
 }

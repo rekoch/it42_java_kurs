@@ -5,4 +5,7 @@
 package Spielfiguren;
 
 public class Zwerg extends Spielfigur {
+    public Zwerg(String name) {
+        super(name);
+    }
 }
