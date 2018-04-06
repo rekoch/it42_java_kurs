@@ -5,13 +5,18 @@
 package Waffen;
 
 public class Nahkampfwaffe extends Waffe {
-    private double verteidigungswert;
+    private int verteidigungswert;
 
-    public double getVerteidigungswert() {
+    @Override
+    public int getWaffenKampfwert(){
+        return super.getWaffenKampfwert()+verteidigungswert/2;
+    }
+
+    public int getVerteidigungswert() {
         return verteidigungswert;
     }
 
-    public void setVerteidigungswert(double verteidigungswert) {
+    public void setVerteidigungswert(int verteidigungswert) {
         this.verteidigungswert = verteidigungswert;
     }
 

@@ -5,14 +5,18 @@
 package Waffen;
 
 public class Waffe {
-    private double angriffswert;
+    private int angriffswert;
     private int gewicht;
 
-    public double getAngriffswert() {
+    public int getWaffenKampfwert(){
         return angriffswert;
     }
 
-    public void setAngriffswert(double angriffswert) {
+    public int getAngriffswert() {
+        return angriffswert;
+    }
+
+    public void setAngriffswert(int angriffswert) {
         this.angriffswert = angriffswert;
     }
 
