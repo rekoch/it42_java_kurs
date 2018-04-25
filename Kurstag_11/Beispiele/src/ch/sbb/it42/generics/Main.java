@@ -8,8 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-        DuplikatFinder df1 = new DuplikatFinder();
+        DuplikatFinder<String> df1 = new DuplikatFinder<String>();
         df1.add("Müller");
         df1.add("Meier");
         df1.add("Huber");
@@ -17,18 +16,17 @@ public class Main {
 
         df1.add("Meier");
         df1.add("Weber");
-        Object namenDuplikat = df1.getIrgendeinDuplikat();
+        String namenDuplikat = df1.getIrgendeinDuplikat();
         System.out.println("Namenduplikat: " + namenDuplikat); // --> Meier
 
 
-        DuplikatFinder doubleDuplikatFinder = new DuplikatFinder();
+        DuplikatFinder<Double> doubleDuplikatFinder = new DuplikatFinder<>();
         doubleDuplikatFinder.add(new Double(23.3));
         doubleDuplikatFinder.add(new Double(42.0));
 
-        Object doubleDuplikat = doubleDuplikatFinder.getIrgendeinDuplikat();
+        Double doubleDuplikat =  doubleDuplikatFinder.getIrgendeinDuplikat();
         System.out.println("Double-Duplikat: " + doubleDuplikat);
 
-        //geht nicht:
-        //doubleDuplikatFinder.add("Müller");
+        //doubleDuplikatFinder.add("Müller");  // <-- geht jetzt nicht mehr
     }
 }

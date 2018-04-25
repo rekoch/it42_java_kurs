@@ -7,18 +7,21 @@ package ch.sbb.it42.generics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DuplikatFinder {
-    private List bestehendeElemente = new ArrayList();
-    private Object duplikat = null;
+// Diese Datenstruktur wurde zuerst für den java.lang.Object-Typ gebaut,
+// hier ist die generifizierte Version mit T (siehe Git-History)
 
-    public void add(Object element) {
+public class DuplikatFinder<T> {
+    private List<T> bestehendeElemente = new ArrayList<T>();
+    private T duplikat = null;
+
+    public void add(T element) {
         if (bestehendeElemente.contains(element)) {
             duplikat = element;
         }
         bestehendeElemente.add(element);
     }
 
-    public Object getIrgendeinDuplikat() {
+    public T getIrgendeinDuplikat() {
         return duplikat;
     }
 }

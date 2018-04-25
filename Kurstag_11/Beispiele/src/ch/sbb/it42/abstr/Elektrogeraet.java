@@ -4,10 +4,8 @@
 
 package ch.sbb.it42.abstr;
 
-public class Elektrogeraet {
+public abstract class Elektrogeraet {
 
-    public void starten() {
-        System.out.println("Elektrogerät läuft...");
-    }
+    public abstract void starten();
 
 }

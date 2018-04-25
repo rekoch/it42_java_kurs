@@ -4,10 +4,10 @@
 
 package ch.sbb.it42.abstr;
 
-public class Staubsauger extends Elektrogeraet{
+public class Staubsauger extends Elektrogeraet {
 
     @Override
-    public void starten() {
+    public final void starten() {
         System.out.println("Staubsauger saugt...");
     }
 }
