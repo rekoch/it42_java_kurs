@@ -1,0 +1,1 @@
+Übungen zu den einzelnen Kurstagen sind hier abgelegt und könne direkt im jeweiligen Verzeichnis gelöst, commitet und auf (persönlichen) Branch gepusht werden.

@@ -1,0 +1,1 @@
+Musterlösungen zu den einzelnen Kurstagen
