@@ -2,9 +2,9 @@ package ch.sbb.it42;
 
 import java.util.Scanner;
 
-public class StringPoolingRuntime {
+public class FunWithStringPooling {
     public static void main(String[] args) {
-        StringPoolingRuntime stringPoolingRuntime = new StringPoolingRuntime();
+        FunWithStringPooling stringPoolingRuntime = new FunWithStringPooling();
         stringPoolingRuntime.runIt();
     }
 
