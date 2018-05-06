@@ -9,6 +9,7 @@ public class FunWithStringPooling {
     }
 
     private void runIt() {
+        //TODO: geh die Übung durch so, dass du sie anderen erkären kannst was genau passiert
         Scanner scanner = new Scanner(System.in);
 
         String text1 = "Hallo";
