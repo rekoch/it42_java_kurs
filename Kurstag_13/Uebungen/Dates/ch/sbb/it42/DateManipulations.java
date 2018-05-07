@@ -14,8 +14,7 @@ public class DateManipulations {
         //TODO: Wieso muss getIstance verwendet werden? Was ist das spezielle an diesem Aufruf?
         Calendar now = Calendar.getInstance();
 
-        //TODO: formatiere das ein wenig angenehmer
-        System.out.printf("Formatiere mich hübsch: %s ", now);
+        System.out.printf("Datumsausgabe: %s ", now);
         System.out.println();
 
         //TODO: ziehe 5 Tage vom Datum ab
@@ -27,23 +26,22 @@ public class DateManipulations {
         //TODO: gib das Datum in schön aus
 
 
-        //Jetzt wirds etwas bunter. Diese API musst du googeln und findest sie nicht im Buch!
+        //TODO: Jetzt wirds etwas bunter. Diese API musst du googeln und findest sie nicht im Buch!
+        //TODO: zeige auf, was an der "neuen" Java API (Java Time) sonst noch so cool ist. Die folgenden
+        //Uebungen sollen dir dabei helfen.
 
         LocalTime onlyTime = LocalTime.now();
-        //TODO: formatiere das ein wenig angenehmer
-        System.out.printf("Formatiere mich hübsch: %s ", onlyTime);
+        System.out.printf("Datumsausgabe: %s ", onlyTime);
         System.out.println();
 
         //TODO: Setze die Zeit auf heute Mitternacht
-        //TODO: gib es in schön aus
-        System.out.printf("Formatiere mich hübsch: %s ", onlyTime);
+        System.out.printf("Datumsausgabe: %s ", onlyTime);
         System.out.println();
 
 
         LocalDateTime dateAndTime = LocalDateTime.now();
         //TODO: Setze das Datum auf den 21. Januar 2012 um 14:33:21
-        //TODO: gib es in schön aus
-        System.out.printf("Formatiere mich hübsch: %s ", dateAndTime);
+        System.out.printf("Datumsausgabe: %s ", dateAndTime);
         System.out.println();
 
         //TODO: Berechne die Anzahl der Tage zwischen damals und heute und gib das aus
