@@ -5,31 +5,33 @@
 package ch.sbb.it42.streams;
 
 import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.net.Socket;
+import java.io.IOException;
 
 public class StreamBeispiel {
-
-    public static void main(String[] args) throws Exception {
-
-        FileOutputStream fos = new FileOutputStream("C:\\temp\\mk\\ausgabe_datei.txt");
-
-
-        fos.write(new byte[]{'h'});
-        fos.write(new byte[]{'a'});
-        fos.write(new byte[]{'l'});
-        fos.write(new byte[]{'l'});
-        fos.write(new byte[]{'o'});
-
-        fos.close();
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("C:\\temp\\mk\\beispiel\\ausgabedatei.txt");
+            fos.write(new byte[]{'h'});
+            fos.write(new byte[]{'a'});
+            fos.write(new byte[]{'l'});
+            fos.write(new byte[]{'l'});
+            fos.write(new byte[]{'o'});
+        } catch (IOException e) {
+            throw e;
+        } finally {
+            if (fos != null) {
+                fos.close();
+            }
+        }
     }
 
 
     // Ineffizienz -> BufferedOutputStream verwenden (Wrapping)
 
-    // .flush zeigen
+    // System.out
+
+    // .flush
 
     // PrintStream
 
