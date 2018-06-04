@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class AdressDatenbank {
@@ -29,6 +30,8 @@ public class AdressDatenbank {
         Gson jsonConverter = new Gson();
         BufferedWriter writer = null;
         try {
+            Comparator x = null;
+
             writer = new BufferedWriter(new FileWriter(datenbankDateiname));
             for (Adresse adresse : adressen) {
                 String json = jsonConverter.toJson(adresse);
@@ -49,7 +52,7 @@ public class AdressDatenbank {
                 } catch (IOException e) {
                     // Auch beim Schliessen kann wieder ein Problem auftreten. Exception hier dennoch nicht
                     // weiterreichen. Grund: finally wird auch beim rethrowen einer anderen Exception
-                    // durchlaufen, und dann würde die urspruengliche durch diese Exception hier "verdeckt".
+                    // durchlaufen, und dann wuerde die urspruengliche durch diese Exception hier "verdeckt".
                     System.err.println("Schliessen fehlgeschlagen.");
                 }
             }
@@ -92,7 +95,7 @@ public class AdressDatenbank {
 
 
     //
-    // Was passiert, wenn du in Adresse.java einen Attributnamen änderst (z.B. "vorname" nach "vornamen")
+    // Was passiert, wenn du in Adresse.java einen Attributnamen ï¿½nderst (z.B. "vorname" nach "vornamen")
     // und du nach dieser Aenderung eine Datenbank-Datei einliest, die noch *vor* dieser Aenderung
     // geschrieben wurde? (--> Ausprobieren!!)
     // Antwort: Die Attribute werden nicht gelesen und behalten stattdessen ihren null-Wert.
