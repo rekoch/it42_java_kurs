@@ -30,7 +30,7 @@ public class SimpleServer {
                     if (zeile == null) {
                         break;
                     }
-                    System.out.println("Habe Text empfangen: " + zeile);
+                    System.out.println("Empfangener Text: " + zeile);
                 }
             } catch (IOException e) {
                 System.out.println("Ein Fehler ist aufgetreten: " + e);
