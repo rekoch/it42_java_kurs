@@ -42,7 +42,7 @@ public class Adresse {
 
     @Override
     public String toString() {
-        return "Adresse{" +
+        return "adressKartei.Adresse{" +
                 "vorname='" + vorname + '\'' +
                 ", nachname='" + nachname + '\'' +
                 ", strasseNr='" + strasseNr + '\'' +

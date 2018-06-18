@@ -28,7 +28,7 @@ public class AdressVerwaltung {
     public void entferneAdresse(Adresse adresse) {
         boolean warVorhanden = adressen.remove(adresse);
         if (!warVorhanden) {
-            System.err.println("Achtung: Adresse "+ adresse+" war gar nicht in der Verwaltung!");
+            System.err.println("Achtung: adressKartei.Adresse "+ adresse+" war gar nicht in der Verwaltung!");
         }
     }
 
