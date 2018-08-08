@@ -10,7 +10,7 @@ public class ZehnRappenRueckgabe extends Processor {
     public void process(Restbetrag restbetrag) {
         BigDecimal muenzentyp = new BigDecimal("0.10");
 
-        System.out.println("Gib "+restbetrag.getAnzahlMuenzenFuer(muenzentyp) +" x 10 Rp. heraus");
+        System.out.println("Gib " + restbetrag.getAnzahlMuenzenFuer(muenzentyp) + " x 10 Rp. heraus");
 
         Restbetrag neuerRestbetrag = new Restbetrag(restbetrag.getRestbetragFuer(muenzentyp));
 

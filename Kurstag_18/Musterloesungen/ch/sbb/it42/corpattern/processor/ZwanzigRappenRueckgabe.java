@@ -10,7 +10,7 @@ public class ZwanzigRappenRueckgabe extends Processor {
     public void process(Restbetrag restbetrag) {
         BigDecimal muenzentyp = new BigDecimal("0.20");
 
-        System.out.println("Gib "+restbetrag.getAnzahlMuenzenFuer(muenzentyp) +" x 20 Rp. heraus");
+        System.out.println("Gib " + restbetrag.getAnzahlMuenzenFuer(muenzentyp) + " x 20 Rp. heraus");
 
         Restbetrag neuerRestbetrag = new Restbetrag(restbetrag.getRestbetragFuer(muenzentyp));
 

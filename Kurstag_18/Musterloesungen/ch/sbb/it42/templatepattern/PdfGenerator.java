@@ -13,23 +13,24 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class KontoauszugPdfGenerator {
+public abstract class PdfGenerator {
 
-    public void generierePdf(Konto konto, String pdfFilename) throws DocumentException, IOException {
+    public final void generierePdf(Konto konto, String pdfFilename) throws DocumentException, IOException {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(pdfFilename));
         document.open();
-        document.add(createParagraph("Kontoauszug für " + konto.getVorname() + " " + konto.getNachname() + " vom " + getAktuellesDatum() + "\n\n\n"));
-        document.add(createParagraph(createBetragZeile("Startbestand", null, konto.getStartKontostand())));
-        document.add(createParagraph("\n"));
-        for (KontoBewegung kontoBewegung : konto.getKontoBewegungen()) {
-            document.add(createParagraph(createBetragZeile(kontoBewegung.getText(), kontoBewegung.getArt(), kontoBewegung.getBetrag())));
-        }
-        document.add(createParagraph("\n"));
-        document.add(createParagraph(createBetragZeile("Endbestand ", null, konto.getEndKontostand())));
-        document.add(createParagraph("\n\nMfg\nIhre Bank"));
+        createEinstiegstext(document, konto);
+        createHaupttext(document, konto);
+        createSchlusstext(document);
         document.close();
     }
+
+    // Dreimal das Template-Pattern für die leicht unterschiedlichen Einstiegs-, Haupt- und Schlusstexte in den beiden Dokus:
+    protected abstract void createEinstiegstext(Document document, Konto konto) throws DocumentException, IOException;
+
+    protected abstract void createHaupttext(Document document, Konto konto) throws DocumentException, IOException;
+
+    protected abstract void createSchlusstext(Document document) throws DocumentException, IOException;
 
 
     // Hilfsmethoden (Detail/unwichtig)
@@ -52,7 +53,7 @@ public class KontoauszugPdfGenerator {
         if (art == null) {
             return " ";
         } else {
-            return art == AUSZAHLUNG ? "-" : "+";
+            return art == KontoBewegung.Art.AUSZAHLUNG ? "-" : "+";
         }
     }
 

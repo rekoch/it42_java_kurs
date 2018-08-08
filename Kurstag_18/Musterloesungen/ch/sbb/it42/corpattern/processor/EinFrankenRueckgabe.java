@@ -10,7 +10,7 @@ public class EinFrankenRueckgabe extends Processor {
     public void process(Restbetrag restbetrag) {
         BigDecimal muenzentyp = new BigDecimal("1.00");
 
-        System.out.println("Gib "+restbetrag.getAnzahlMuenzenFuer(muenzentyp) +" x 1 Fr. heraus");
+        System.out.println("Gib " + restbetrag.getAnzahlMuenzenFuer(muenzentyp) + " x 1 Fr. heraus");
 
         Restbetrag neuerRestbetrag = new Restbetrag(restbetrag.getRestbetragFuer(muenzentyp));
 

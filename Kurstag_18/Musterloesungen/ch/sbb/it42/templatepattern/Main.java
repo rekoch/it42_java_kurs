@@ -14,8 +14,7 @@ public class Main {
         KontoauszugPdfGenerator kaGenerator = new KontoauszugPdfGenerator();
         kaGenerator.generierePdf(konto, "C:\\temp\\kontoauszug.pdf");
 
-        //TODO
-        //SteuerbescheinigungPdfGenerator sbGenerator = new SteuerbescheinigungPdfGenerator();
-        //sbGenerator.generierePdf(konto, "C:\\temp\\steuerbescheinigung.pdf");
+        SteuerbescheinigungPdfGenerator sbGenerator = new SteuerbescheinigungPdfGenerator();
+        sbGenerator.generierePdf(konto, "C:\\temp\\steuerbescheinigung.pdf");
     }
 }

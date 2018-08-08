@@ -10,7 +10,7 @@ public class FuenfFrankenRueckgabe extends Processor {
     public void process(Restbetrag restbetrag) {
         BigDecimal muenzentyp = new BigDecimal("5.00");
 
-        System.out.println("Gib "+restbetrag.getAnzahlMuenzenFuer(muenzentyp) +" x 5 Fr. heraus");
+        System.out.println("Gib " + restbetrag.getAnzahlMuenzenFuer(muenzentyp) + " x 5 Fr. heraus");
 
         Restbetrag neuerRestbetrag = new Restbetrag(restbetrag.getRestbetragFuer(muenzentyp));
 

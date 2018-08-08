@@ -10,7 +10,7 @@ public class ZweiFrankenRueckgabe extends Processor {
     public void process(Restbetrag restbetrag) {
         BigDecimal muenzentyp = new BigDecimal("2.00");
 
-        System.out.println("Gib "+restbetrag.getAnzahlMuenzenFuer(muenzentyp) +" x 2 Fr. heraus");
+        System.out.println("Gib " + restbetrag.getAnzahlMuenzenFuer(muenzentyp) + " x 2 Fr. heraus");
 
         Restbetrag neuerRestbetrag = new Restbetrag(restbetrag.getRestbetragFuer(muenzentyp));
 
