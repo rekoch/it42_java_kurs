@@ -1,4 +1,4 @@
-package ch.sbbb.it42.templatepattern;
+package ch.sbb.it42.templatepattern;
 
 import java.math.BigDecimal;
 

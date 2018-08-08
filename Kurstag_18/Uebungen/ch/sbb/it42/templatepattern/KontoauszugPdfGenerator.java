@@ -1,4 +1,4 @@
-package ch.sbbb.it42.templatepattern;
+package ch.sbb.it42.templatepattern;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -49,10 +49,14 @@ public class KontoauszugPdfGenerator {
     }
 
     private String getVorzeichen(KontoBewegung.Art art) {
-        if (art == null) {
-            return " ";
+        switch (art) {
+            case AUSZAHLUNG:
+                return "-";
+            case EINZAHLUNG:
+                return "+";
+            default:
+                return " ";
         }
-        return art == KontoBewegung.Art.AUSZAHLUNG ? "-" : "+";
     }
 
     private String format(BigDecimal betrag) {
